@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Forge public testnet rehearsal results",
+  "description": "Hand-written sanitized evidence after a real Sepolia smoke. Never copy Foundry broadcast JSON. This PR did not broadcast; fill status NOT_EXECUTED until a real tx exists.",
+  "type": "object",
+  "required": ["disclaimer", "status", "chainId", "commitSha", "results"],
+  "properties": {
+    "disclaimer": {
+      "type": "string",
+      "const": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. This deployment does not represent a live security, investment product, USD-backed asset, audited protocol, KYC platform, or production issuance."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["NOT_EXECUTED", "PARTIAL", "COMPLETE"]
+    },
+    "chainId": { "type": "integer", "const": 11155111 },
+    "commitSha": { "type": "string" },
+    "rpc": { "type": "string", "description": "Label only (e.g. public-sepolia). Do not commit API keys." },
+    "tokenName": { "type": "string" },
+    "tokenSymbol": { "type": "string" },
+    "ackRoleOverlap": { "type": "boolean" },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["testName", "status"],
+        "properties": {
+          "testName": {
+            "type": "string",
+            "enum": [
+              "DEPLOY_REGISTRY",
+              "DEPLOY_COMPLIANCE",
+              "DEPLOY_TOKEN",
+              "DEPLOY_ROLE_GRANTS",
+              "ROLE_ADMIN",
+              "ROLE_ISSUER",
+              "ROLE_FREEZER",
+              "ROLE_RECOVERY",
+              "UNAUTHORIZED_MINT_REVERT",
+              "UNAUTHORIZED_FREEZE_REVERT",
+              "UNAUTHORIZED_UNFREEZE_REVERT",
+              "UNAUTHORIZED_SET_VERIFIED_REVERT",
+              "UNAUTHORIZED_FORCE_TRANSFER_REVERT",
+              "UNAUTHORIZED_BURN_REVERT",
+              "IDENTITY_ALICE_UNVERIFIED",
+              "IDENTITY_BOB_UNVERIFIED",
+              "IDENTITY_SET_VERIFIED_ALICE",
+              "IDENTITY_SET_VERIFIED_BOB",
+              "MINT_ALICE_1000",
+              "MINT_SUPPLY_DELTA",
+              "TRANSFER_VERIFIED_ALICE_BOB_100",
+              "TRANSFER_SUPPLY_CONSTANT",
+              "TRANSFER_UNVERIFIED_ALICE_CHARLIE_REVERT",
+              "TRANSFER_UNVERIFIED_CHARLIE_ALICE_REVERT",
+              "FREEZE_ALICE",
+              "FROZEN_ALICE_TO_BOB_REVERT",
+              "FROZEN_BOB_TO_ALICE_REVERT",
+              "UNFREEZE_ALICE",
+              "TRANSFER_AFTER_UNFREEZE",
+              "FORCE_TRANSFER_FROZEN_ALICE_TO_REPLACEMENT",
+              "FORCE_TRANSFER_SUPPLY_CONSTANT",
+              "COMPLIANCE_MAX_BALANCE_BELOW_CAP",
+              "COMPLIANCE_MAX_BALANCE_OVER_CAP_REVERT",
+              "TAG_ALLOWLIST_TEST_POLICY",
+              "ISSUER_BURN",
+              "SUPPLY_LEDGER_MATCH"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "SKIPPED",
+              "NOT EXECUTED — no public-chain broadcast in this PR"
+            ]
+          },
+          "txHash": {
+            "type": "string",
+            "description": "Empty unless a real tx exists. Never fabricate."
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

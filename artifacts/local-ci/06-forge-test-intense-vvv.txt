@@ -1,0 +1,180 @@
+=== FOUNDRY_PROFILE=intense forge test -vvv ===
+2026-08-28T01:15:11Z
+No files changed, compilation skipped
+
+Ran 2 tests for test/TestnetSmoke.t.sol:TestnetSmokeTest
+[PASS] test_deploy_public_testnet_labels_are_afpt() (gas: 5344855)
+[PASS] test_smoke_refuses_non_sepolia_chain() (gas: 5824875)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 1.01ms (643.15µs CPU time)
+
+Ran 9 tests for test/AcceptedDesign.t.sol:AcceptedDesignTest
+[PASS] test_accepted_default_admin_is_single_address_not_timelock() (gas: 69201)
+[PASS] test_accepted_deploy_name_afpUSD_is_label_not_usd_claim() (gas: 31884)
+[PASS] test_accepted_force_transfer_bypasses_freeze_registry_cap_and_tags() (gas: 398100)
+[PASS] test_accepted_force_transfer_does_not_spend_allowance() (gas: 108129)
+[PASS] test_accepted_issuer_is_god_mint_burn_freeze_force() (gas: 273005)
+[PASS] test_accepted_mint_to_unverified() (gas: 95549)
+[PASS] test_accepted_tags_enforced_denies_default_zero_tag() (gas: 117848)
+[PASS] test_accepted_token_issuer_is_not_automatically_registry_issuer() (gas: 194583)
+[PASS] test_accepted_unverified_spender_may_transferFrom_between_verified() (gas: 139967)
+Suite result: ok. 9 passed; 0 failed; 0 skipped; finished in 2.69ms (1.22ms CPU time)
+
+Ran 36 tests for test/PermissionedToken.t.sol:PermissionedTokenTest
+[PASS] test_cannot_burn_from_frozen() (gas: 90790)
+[PASS] test_cannot_mint_to_frozen() (gas: 90854)
+[PASS] test_constructor_grants_operational_roles() (gas: 77877)
+[PASS] test_constructor_rejects_zero_addresses() (gas: 15360)
+[PASS] test_delisted_holder_cannot_send_or_receive() (gas: 115885)
+[PASS] test_force_transfer_cannot_mint_or_burn() (gas: 65794)
+[PASS] test_force_transfer_from_unverified_succeeds() (gas: 118186)
+[PASS] test_force_transfer_insufficient_balance_reverts() (gas: 42748)
+[PASS] test_force_transfer_moves_without_changing_supply() (gas: 112109)
+[PASS] test_force_transfer_recovers_from_frozen() (gas: 155775)
+[PASS] test_force_transfer_to_unverified_succeeds() (gas: 89952)
+[PASS] test_force_transfer_zero_amount_reverts() (gas: 39929)
+[PASS] test_freeze_does_not_change_supply_or_balances() (gas: 108031)
+[PASS] test_freeze_zero_address_reverts() (gas: 34732)
+[PASS] test_frozen_cannot_receive() (gas: 90647)
+[PASS] test_frozen_cannot_send() (gas: 88483)
+[PASS] test_frozen_cannot_send_or_receive_transferFrom() (gas: 250751)
+[PASS] test_issuer_burn_from_unverified_succeeds() (gas: 123348)
+[PASS] test_issuer_force_transfer_moves_without_changing_supply() (gas: 82275)
+[PASS] test_issuer_mint_to_unverified_succeeds() (gas: 95670)
+[PASS] test_mint_and_burn_reject_zero_amount() (gas: 63293)
+[PASS] test_only_issuer_burns() (gas: 45084)
+[PASS] test_only_issuer_mint_and_burn_change_supply() (gas: 144920)
+[PASS] test_only_issuer_mints() (gas: 123847)
+[PASS] test_unauthorized_force_transfer_reverts() (gas: 105363)
+[PASS] test_unauthorized_freeze_reverts() (gas: 84699)
+[PASS] test_unauthorized_set_verified_reverts() (gas: 43081)
+[PASS] test_unauthorized_unfreeze_reverts() (gas: 99895)
+[PASS] test_unfreeze_does_not_change_supply() (gas: 107648)
+[PASS] test_unfreeze_restores_user_transfers() (gas: 147062)
+[PASS] test_unverified_cannot_receive_transfer() (gas: 48580)
+[PASS] test_unverified_cannot_receive_transferFrom() (gas: 104551)
+[PASS] test_unverified_cannot_send_transfer() (gas: 120064)
+[PASS] test_unverified_cannot_send_transferFrom() (gas: 161323)
+[PASS] test_verified_holders_can_transfer() (gas: 87205)
+[PASS] test_verified_holders_can_transferFrom() (gas: 120874)
+Suite result: ok. 36 passed; 0 failed; 0 skipped; finished in 3.42ms (2.19ms CPU time)
+
+Ran 13 tests for test/Compliance.t.sol:ComplianceTest
+[PASS] test_constructor_rejects_zero_admin() (gas: 5968)
+[PASS] test_force_transfer_bypasses_max_balance() (gas: 114907)
+[PASS] test_force_transfer_bypasses_tags() (gas: 242525)
+[PASS] test_max_balance_blocks_issuer_mint() (gas: 101199)
+[PASS] test_max_balance_blocks_receive() (gas: 183341)
+[PASS] test_self_transfer_at_max_balance_does_not_revert() (gas: 125583)
+[PASS] test_self_transfer_from_still_at_max_balance() (gas: 159031)
+[PASS] test_tag_allowlist_blocks_disallowed_class_code() (gas: 265129)
+[PASS] test_tag_allowlist_blocks_untagged() (gas: 336633)
+[PASS] test_tags_not_checked_until_enforced() (gas: 130668)
+[PASS] test_unauthorized_set_max_balance_reverts() (gas: 42312)
+[PASS] test_unauthorized_set_tag_reverts() (gas: 45357)
+[PASS] test_uncapped_when_max_balance_zero() (gas: 65827)
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 1.75ms (948.65µs CPU time)
+
+Ran 8 tests for test/IdentityRegistry.t.sol:IdentityRegistryTest
+[PASS] test_admin_cannot_set_verified_without_issuer_role() (gas: 45000)
+[PASS] test_cannot_verify_zero_address() (gas: 35395)
+[PASS] test_constructor_grants_issuer_without_deployer_admin() (gas: 41690)
+[PASS] test_constructor_rejects_zero_admin() (gas: 5970)
+[PASS] test_issuer_can_delist_without_clearing_hash() (gas: 55612)
+[PASS] test_issuer_sets_verified_with_attestation_hash() (gas: 99282)
+[PASS] test_unauthorized_set_verified_reverts() (gas: 43076)
+[PASS] test_unlisted_address_is_not_verified() (gas: 25414)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 5.29ms (711.54µs CPU time)
+
+Ran 2 tests for test/AcceptedDesign.t.sol:DeployScriptTest
+[PASS] test_deploy_default_labels_match_env_example() (gas: 5296046)
+[PASS] test_deploy_grants_roles_when_caller_is_not_admin() (gas: 5416826)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 3.65ms (4.26ms CPU time)
+
+Ran 7 tests for test/Fuzz.t.sol:FuzzTest
+[PASS] testFuzz_forceTransferPreservesSupply(uint256) (runs: 5000, μ: 112531, ~: 112461)
+Logs:
+  Bound result 3470
+
+[PASS] testFuzz_freezeThenUserTransferReverts(uint256) (runs: 5000, μ: 108513, ~: 108209)
+Logs:
+  Bound result 3470
+
+[PASS] testFuzz_maxBalanceHonoredOnTransfer(uint256,uint256) (runs: 5000, μ: 172702, ~: 176475)
+Logs:
+  Bound result 1843684881625690449644
+  Bound result 921002906827316282195
+
+[PASS] testFuzz_mintOnlyChangesSupplyByAmount(uint256) (runs: 5000, μ: 93770, ~: 93494)
+Logs:
+  Bound result 3470
+
+[PASS] testFuzz_randomTransferAttempts(address,address,uint256) (runs: 5000, μ: 60694, ~: 60461)
+Logs:
+  Bound result 261291020208759222749591975041942403597
+
+[PASS] testFuzz_randomTransferFromAttempts(address,address,address,uint256) (runs: 5000, μ: 53476, ~: 53085)
+Logs:
+  Bound result 4627122964163586521753
+
+[PASS] testFuzz_unverifiedRecipientAlwaysReverts(uint256) (runs: 5000, μ: 61974, ~: 61670)
+Logs:
+  Bound result 3470
+
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 739.43ms (2.02s CPU time)
+
+Ran 1 test for test/Invariant.t.sol:InvariantTest
+[PASS]
+InvariantTest invariants:
+[PASS] invariant_actorBalancesBoundBySupply
+[PASS] invariant_frozenUserTransferReverts
+[PASS] invariant_supplyMatchesMintBurn
+ InvariantTest invariants (runs: 256, calls: 12800, reverts: 0)
+
+╭--------------------+-----------------+-------+---------+----------╮
+| Contract           | Selector        | Calls | Reverts | Discards |
++===================================================================+
+| RestrictionHandler | burn            | 1604  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | forceTransfer   | 1619  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | freezeAccount   | 1670  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | mint            | 1618  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | setVerified     | 1584  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | transfer        | 1601  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | transferFrom    | 1597  | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | unfreezeAccount | 1507  | 0       | 0        |
+╰--------------------+-----------------+-------+---------+----------╯
+
+Logs:
+  Bound result 46155846604532112858
+  Bound result 2648
+  Bound result 90765521441919027111
+  Bound result 2835717307
+  Bound result 709
+  Bound result 488
+  Bound result 1344
+  Bound result 7
+  Bound result 478
+  Bound result 90765521441919026400
+  Bound result 3
+  Bound result 517440284
+  Bound result 304264259351500711349
+  Bound result 402
+  Bound result 2
+  Bound result 7403
+  Bound result 751489711338935435729
+  Bound result 291
+  Bound result 36250280078725726977
+  Bound result 1
+  Bound result 40000000000000000000
+  Bound result 415
+  Bound result 95
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.83s (1.83s CPU time)
+
+Ran 8 test suites in 1.83s (2.59s CPU time): 78 tests passed, 0 failed, 0 skipped (78 total tests)

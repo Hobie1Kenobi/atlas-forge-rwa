@@ -1,0 +1,4 @@
+=== forge clean ===
+2026-08-28T01:14:21Z
+exit 0
+(no additional stdout)

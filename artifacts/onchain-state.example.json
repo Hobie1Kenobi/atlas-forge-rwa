@@ -1,0 +1,30 @@
+{
+  "disclaimer": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. Not a live security, KYC platform, or production issuance.",
+  "status": "NOT_EXECUTED",
+  "chainId": 11155111,
+  "blockNumber": "NOT EXECUTED — no public-chain broadcast in this PR",
+  "timestampUtc": "",
+  "commitSha": "NOT EXECUTED — no public-chain broadcast in this PR",
+  "contracts": {
+    "identityRegistry": "",
+    "compliance": "",
+    "permissionedToken": ""
+  },
+  "token": {
+    "name": "Atlas Forge Permissioned Test Token",
+    "symbol": "AFPT",
+    "decimals": 18,
+    "totalSupply": ""
+  },
+  "roles": {
+    "DEFAULT_ADMIN": "",
+    "ISSUER": "",
+    "FREEZER": "",
+    "RECOVERY": ""
+  },
+  "holders": [],
+  "compliance": {
+    "maxBalance": "",
+    "tagsEnforced": false
+  }
+}

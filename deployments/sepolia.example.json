@@ -1,0 +1,29 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "status": "NOT_EXECUTED",
+  "note": "Placeholder schema only. No public-chain broadcast in this PR. Do not invent addresses or explorer URLs. Never copy Foundry broadcast JSON (may contain keys).",
+  "commitSha": "",
+  "deployedAtUtc": "",
+  "tokenName": "Atlas Forge Permissioned Test Token",
+  "tokenSymbol": "AFPT",
+  "tokenNameIsLabelNotUsdClaim": true,
+  "contracts": {
+    "identityRegistry": "",
+    "compliance": "",
+    "permissionedToken": ""
+  },
+  "roles": {
+    "DEFAULT_ADMIN": "",
+    "ISSUER": "",
+    "FREEZER": "",
+    "RECOVERY": ""
+  },
+  "ackRoleOverlap": false,
+  "broadcastTxHash": "",
+  "etherscan": {
+    "identityRegistry": "",
+    "compliance": "",
+    "permissionedToken": ""
+  }
+}

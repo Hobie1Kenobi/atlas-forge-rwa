@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Forge on-chain state snapshot (rehearsal)",
+  "description": "Hand-written sanitized snapshot of PermissionedToken + IdentityRegistry + Compliance. Never copy broadcast JSON. This PR did not broadcast.",
+  "type": "object",
+  "required": ["disclaimer", "status", "chainId"],
+  "properties": {
+    "disclaimer": {
+      "type": "string",
+      "const": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. Not a live security, KYC platform, or production issuance."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["NOT_EXECUTED", "PARTIAL", "COMPLETE"]
+    },
+    "chainId": { "type": "integer", "const": 11155111 },
+    "blockNumber": { "type": ["integer", "string"] },
+    "timestampUtc": { "type": "string" },
+    "commitSha": { "type": "string" },
+    "contracts": {
+      "type": "object",
+      "properties": {
+        "identityRegistry": { "type": "string" },
+        "compliance": { "type": "string" },
+        "permissionedToken": { "type": "string" }
+      }
+    },
+    "token": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "symbol": { "type": "string" },
+        "decimals": { "type": "integer" },
+        "totalSupply": { "type": "string" }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "properties": {
+        "DEFAULT_ADMIN": { "type": "string" },
+        "ISSUER": { "type": "string" },
+        "FREEZER": { "type": "string" },
+        "RECOVERY": { "type": "string" }
+      }
+    },
+    "holders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "address": { "type": "string" },
+          "balance": { "type": "string" },
+          "verified": { "type": "boolean" },
+          "attestationHash": { "type": "string", "description": "bytes32 hex. Non-PII test commitments only." },
+          "frozen": { "type": "boolean" },
+          "tag": { "type": "string" }
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "properties": {
+        "maxBalance": { "type": "string" },
+        "tagsEnforced": { "type": "boolean" }
+      }
+    }
+  }
+}

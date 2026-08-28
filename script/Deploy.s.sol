@@ -13,8 +13,11 @@ import { PermissionedToken } from "../src/PermissionedToken.sol";
 /// production fork should split those roles and put DEFAULT_ADMIN on a timelock —
 /// this script does not.
 ///
-/// Default `TOKEN_NAME` / `TOKEN_SYMBOL` are **labels** (`Atlas Forge Permissioned USD` /
-/// `afpUSD`). They are not a USD peg, reserve, redeem, or securities claim.
+/// Solidity `envOr` fallbacks remain `Atlas Forge Permissioned USD` / `afpUSD` so existing
+/// tests that lock those strings stay honest. The **documented public testnet path**
+/// sets `TOKEN_NAME` / `TOKEN_SYMBOL` from `.env.example` to
+/// `Atlas Forge Permissioned Test Token` / `AFPT`. None of these strings is a USD peg,
+/// reserve, redeem, or securities claim.
 ///
 /// This repo is not deployed. Running the script does not make the token a security.
 contract Deploy is Script {
@@ -38,6 +41,7 @@ contract Deploy is Script {
         console2.log("FREEZER", freezer);
         console2.log("RECOVERY", recovery);
         console2.log("Name/symbol are labels, not a USD claim.");
+        console2.log("Public rehearsal should set TOKEN_NAME/TOKEN_SYMBOL to AFPT via env.");
         console2.log("Not a live issuance. Addresses above are this broadcast only.");
     }
 
