@@ -1,6 +1,8 @@
 # Threat model — Atlas Forge RWA
 
-**Status:** v1 architecture, not an audit report. No audit has been performed. This document describes intended trust boundaries and residual risk so a reviewer can map tests to code.
+**Status:** v1 architecture plus an **internal A5 review** (`docs/findings/`). That
+review is not a paid audit, not ERC-3643 certification, and not legal diligence.
+No audit has been performed. This document describes intended trust boundaries and residual risk so a reviewer can map tests to code.
 
 **Scope:** `PermissionedToken` + `IdentityRegistry` + `Compliance`. Demo tags and attestation hashes are **not** a KYC, sanctions, or transfer-agent system.
 
@@ -69,11 +71,11 @@ Delisting (`verified = false`) immediately blocks user send and receive. Existin
 
 ## Compliance knobs
 
-- `maxBalance == 0` → uncapped. Otherwise `balanceOf(to) + amount` must be `<= maxBalance` on mint and user transfer.
+- `maxBalance == 0` → uncapped. Otherwise post-transfer `balanceOf(to)` must be `<= maxBalance` on mint and user transfer. Self-transfer does not add `amount` (the balance does not increase).
 - `tagsEnforced == false` (default) → tags may be stored and are not checked.
 - `tagsEnforced == true` → both `from` and `to` need `allowedTag[tagOf[account]]`. Tags are demo codes (`keccak256("US-AI")`), not ISO countries, not geofences.
 
-`forceTransfer` skips both knobs. A recovery that would exceed max-balance is allowed; that is god-mode, documented here and tested.
+`forceTransfer` calls `ERC20._update` directly (no permissioned hook). It skips both knobs. A recovery that would exceed max-balance is allowed; that is god-mode, documented here and tested.
 
 ## Assets / conservation
 

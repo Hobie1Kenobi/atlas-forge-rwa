@@ -8,10 +8,13 @@ import { Compliance } from "../src/Compliance.sol";
 import { PermissionedToken } from "../src/PermissionedToken.sol";
 
 /// @title Deploy
-/// @notice Local/testnet rehearsal only. Grants DEFAULT_ADMIN to `ADMIN` (or the
-/// broadcaster) and optionally the same address as ISSUER / FREEZER / RECOVERY so
-/// a single key can exercise the sketch. A production fork should split those
-/// roles and put DEFAULT_ADMIN on a timelock — this script does not.
+/// @notice Local/testnet rehearsal only. Constructors grant DEFAULT_ADMIN and the
+/// operational roles, so the broadcaster does **not** need to equal `ADMIN`. A
+/// production fork should split those roles and put DEFAULT_ADMIN on a timelock —
+/// this script does not.
+///
+/// Default `TOKEN_NAME` / `TOKEN_SYMBOL` are **labels** (`Atlas Forge Permissioned USD` /
+/// `afpUSD`). They are not a USD peg, reserve, redeem, or securities claim.
 ///
 /// This repo is not deployed. Running the script does not make the token a security.
 contract Deploy is Script {
@@ -24,8 +27,7 @@ contract Deploy is Script {
         string memory symbol_ = vm.envOr("TOKEN_SYMBOL", string("afpUSD"));
 
         vm.startBroadcast();
-        (address registry, address compliance, address token) =
-            _deploy(admin, issuer, freezer, recovery, name_, symbol_);
+        (address registry, address compliance, address token) = deploy(admin, issuer, freezer, recovery, name_, symbol_);
         vm.stopBroadcast();
 
         console2.log("IdentityRegistry", registry);
@@ -35,26 +37,24 @@ contract Deploy is Script {
         console2.log("ISSUER", issuer);
         console2.log("FREEZER", freezer);
         console2.log("RECOVERY", recovery);
+        console2.log("Name/symbol are labels, not a USD claim.");
         console2.log("Not a live issuance. Addresses above are this broadcast only.");
     }
 
-    function _deploy(
+    /// @notice Deploy the three contracts and grant roles in constructors.
+    /// Callable without broadcast so Foundry tests can lock the ADMIN≠broadcaster path.
+    function deploy(
         address admin,
         address issuer,
         address freezer,
         address recovery,
         string memory name_,
         string memory symbol_
-    ) internal returns (address registryAddr, address complianceAddr, address tokenAddr) {
-        IdentityRegistry registry = new IdentityRegistry(admin);
-        Compliance compliance = new Compliance(admin);
-        PermissionedToken token = new PermissionedToken(name_, symbol_, admin, registry, compliance);
-
-        registry.grantRole(registry.ISSUER_ROLE(), issuer);
-        compliance.grantRole(compliance.ISSUER_ROLE(), issuer);
-        token.grantRole(token.ISSUER_ROLE(), issuer);
-        token.grantRole(token.FREEZER_ROLE(), freezer);
-        token.grantRole(token.RECOVERY_ROLE(), recovery);
+    ) public returns (address registryAddr, address complianceAddr, address tokenAddr) {
+        IdentityRegistry registry = new IdentityRegistry(admin, issuer);
+        Compliance compliance = new Compliance(admin, issuer);
+        PermissionedToken token =
+            new PermissionedToken(name_, symbol_, admin, issuer, freezer, recovery, registry, compliance);
 
         registryAddr = address(registry);
         complianceAddr = address(compliance);

@@ -52,7 +52,15 @@ contract IdentityRegistryTest is Fixture {
 
     function test_constructor_rejects_zero_admin() public {
         vm.expectRevert(IdentityRegistry.ZeroAddress.selector);
-        new IdentityRegistry(address(0));
+        new IdentityRegistry(address(0), issuer);
+    }
+
+    function test_constructor_grants_issuer_without_deployer_admin() public {
+        address otherAdmin = makeAddr("otherAdmin");
+        IdentityRegistry standalone = new IdentityRegistry(otherAdmin, issuer);
+        assertTrue(standalone.hasRole(standalone.DEFAULT_ADMIN_ROLE(), otherAdmin));
+        assertTrue(standalone.hasRole(standalone.ISSUER_ROLE(), issuer));
+        assertFalse(standalone.hasRole(standalone.DEFAULT_ADMIN_ROLE(), address(this)));
     }
 
     function test_unlisted_address_is_not_verified() public view {

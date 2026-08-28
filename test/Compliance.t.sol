@@ -98,7 +98,28 @@ contract ComplianceTest is Fixture {
 
     function test_constructor_rejects_zero_admin() public {
         vm.expectRevert(Compliance.ZeroAddress.selector);
-        new Compliance(address(0));
+        new Compliance(address(0), issuer);
+    }
+
+    function test_self_transfer_at_max_balance_does_not_revert() public {
+        vm.prank(issuer);
+        compliance.setMaxBalance(1000 ether);
+        assertEq(token.balanceOf(alice), 1000 ether);
+
+        vm.prank(alice);
+        token.transfer(alice, 100 ether);
+        assertEq(token.balanceOf(alice), 1000 ether);
+    }
+
+    function test_self_transfer_from_still_at_max_balance() public {
+        vm.prank(issuer);
+        compliance.setMaxBalance(1000 ether);
+        vm.prank(alice);
+        token.approve(bob, 50 ether);
+
+        vm.prank(bob);
+        token.transferFrom(alice, alice, 50 ether);
+        assertEq(token.balanceOf(alice), 1000 ether);
     }
 
     function test_force_transfer_bypasses_max_balance() public {
@@ -108,5 +129,18 @@ contract ComplianceTest is Fixture {
         vm.prank(recovery);
         token.forceTransfer(alice, bob, 100 ether);
         assertEq(token.balanceOf(bob), 600 ether);
+    }
+
+    function test_force_transfer_bypasses_tags() public {
+        vm.startPrank(issuer);
+        compliance.setAllowedTag(TAG_US_AI, true);
+        compliance.setTag(alice, TAG_US_AI);
+        compliance.setTagsEnforced(true);
+        vm.stopPrank();
+
+        vm.prank(recovery);
+        token.forceTransfer(alice, attacker, 10 ether);
+        assertEq(token.balanceOf(attacker), 10 ether);
+        assertEq(compliance.tagOf(attacker), bytes32(0));
     }
 }

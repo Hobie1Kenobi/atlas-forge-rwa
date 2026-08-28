@@ -387,12 +387,20 @@ contract PermissionedTokenTest is Fixture {
 
     function test_constructor_rejects_zero_addresses() public {
         vm.expectRevert(PermissionedToken.ZeroAddress.selector);
-        new PermissionedToken("x", "y", address(0), registry, compliance);
+        new PermissionedToken("x", "y", address(0), issuer, freezer, recovery, registry, compliance);
 
         vm.expectRevert(PermissionedToken.ZeroAddress.selector);
-        new PermissionedToken("x", "y", admin, IdentityRegistry(address(0)), compliance);
+        new PermissionedToken("x", "y", admin, issuer, freezer, recovery, IdentityRegistry(address(0)), compliance);
 
         vm.expectRevert(PermissionedToken.ZeroAddress.selector);
-        new PermissionedToken("x", "y", admin, registry, Compliance(address(0)));
+        new PermissionedToken("x", "y", admin, issuer, freezer, recovery, registry, Compliance(address(0)));
+    }
+
+    function test_constructor_grants_operational_roles() public view {
+        assertTrue(token.hasRole(token.DEFAULT_ADMIN_ROLE(), admin));
+        assertTrue(token.hasRole(token.ISSUER_ROLE(), issuer));
+        assertTrue(token.hasRole(token.FREEZER_ROLE(), freezer));
+        assertTrue(token.hasRole(token.RECOVERY_ROLE(), recovery));
+        assertFalse(token.hasRole(token.DEFAULT_ADMIN_ROLE(), address(this)));
     }
 }
