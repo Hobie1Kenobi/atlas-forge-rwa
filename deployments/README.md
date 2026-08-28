@@ -1,6 +1,9 @@
-# Sepolia deployment records
+# Deployment records
 
-Hand-written sanitized record: [`sepolia.json`](sepolia.json).
+Hand-written sanitized records:
+[`sepolia.json`](sepolia.json) (Ethereum Sepolia) and
+[`base-sepolia.json`](base-sepolia.json) (Base Sepolia, chainId `84532`, operator
+`0xEBd9…449e9`, not an issuance).
 Do not paste Foundry `broadcast/` JSON here (`run-latest` can contain private
 keys). Do not invent transaction hashes.
 

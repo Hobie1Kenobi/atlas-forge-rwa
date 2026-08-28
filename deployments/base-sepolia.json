@@ -1,0 +1,82 @@
+{
+  "disclaimer": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. This deployment does not represent a live security, investment product, USD-backed asset, audited protocol, KYC platform, or production issuance.",
+  "network": "base-sepolia",
+  "chainId": 84532,
+  "status": "DEPLOYED_REHEARSAL",
+  "overallStatus": "TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE",
+  "note": "Hand-written sanitized record from on-chain receipts. Do not trust Foundry broadcast JSON contractName (misaligned). Never copy run-latest JSON (may contain keys). Not a live issuance. Not a mainnet deploy. Ethereum Sepolia AFPT remains under rehearsal deployer 0xB2636381c7a501DfB316ea786a2c689324318b01; those hashes are not rewritten here. Basescan recruiter-facing #code links; forge verify-contract Pass - Verified plus Etherscan v2 getsourcecode (SimilarMatch empty) confirmed 2026-08-28. HTML scrape of Basescan returned 403 WAF from the operator box. Sourcify exact_match remains additional proof.",
+  "commitSha": "0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f",
+  "deployedAtUtc": "2026-08-28",
+  "deployBlock": 46060034,
+  "solc": "0.8.28",
+  "evmVersion": "cancun",
+  "optimizerRuns": 200,
+  "tokenName": "Atlas Forge Permissioned Test Token",
+  "tokenSymbol": "AFPT",
+  "tokenNameIsLabelNotUsdClaim": true,
+  "contracts": {
+    "identityRegistry": {
+      "address": "0x79f550d079065Ef10861F957c7F9febDE8929d8e",
+      "bytecodeBytes": 1535,
+      "deploymentTx": "0x8947f23c4b0ce7a6bf97176224247a2308fe5be92f7a13d755bc061aa99556e5",
+      "block": 46060034,
+      "gasUsed": 441695,
+      "sourcify": {
+        "match": "exact_match",
+        "url": "https://repo.sourcify.dev/84532/0x79f550d079065Ef10861F957c7F9febDE8929d8e"
+      },
+      "etherscanVerified": true,
+      "etherscanNote": "Pass - Verified confirmed 2026-08-28 via forge verify-contract --chain 84532 --verifier etherscan --watch (solc 0.8.28, optimizer 200, cancun). Etherscan v2 getsourcecode chainid=84532: ContractName IdentityRegistry, CompilerVersion v0.8.28+commit.7893614a, OptimizationUsed 1, Runs 200, EVMVersion cancun, SimilarMatch empty, SourceCode nonempty. Recruiter-facing: https://sepolia.basescan.org/address/0x79f550d079065Ef10861F957c7F9febDE8929d8e#code. HTML scrape of Basescan returned 403 WAF from the operator box."
+    },
+    "compliance": {
+      "address": "0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A",
+      "bytecodeBytes": 2285,
+      "deploymentTx": "0x8e3ad6efcecc1b8fd40fa211089185c9d822182dc3f0ca91ac735d2b6f26a3cb",
+      "block": 46060034,
+      "gasUsed": 604023,
+      "sourcify": {
+        "match": "exact_match",
+        "url": "https://repo.sourcify.dev/84532/0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A"
+      },
+      "etherscanVerified": true,
+      "etherscanNote": "Pass - Verified confirmed 2026-08-28 via forge verify-contract --chain 84532 --verifier etherscan --watch (solc 0.8.28, optimizer 200, cancun). Etherscan v2 getsourcecode chainid=84532: ContractName Compliance, CompilerVersion v0.8.28+commit.7893614a, OptimizationUsed 1, Runs 200, EVMVersion cancun, SimilarMatch empty, SourceCode nonempty. Recruiter-facing: https://sepolia.basescan.org/address/0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A#code. HTML scrape of Basescan returned 403 WAF from the operator box."
+    },
+    "permissionedToken": {
+      "address": "0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2",
+      "bytecodeBytes": 4872,
+      "deploymentTx": "0x60a67742dea7a293a499fb4ff816a40949c98aa98c28398f8609f93c424c2e28",
+      "block": 46060034,
+      "gasUsed": 1319019,
+      "sourcify": {
+        "match": "exact_match",
+        "url": "https://repo.sourcify.dev/84532/0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2"
+      },
+      "etherscanVerified": true,
+      "etherscanNote": "Pass - Verified confirmed 2026-08-28 via forge verify-contract --chain 84532 --verifier etherscan --watch (solc 0.8.28, optimizer 200, cancun). Etherscan v2 getsourcecode chainid=84532: ContractName PermissionedToken, CompilerVersion v0.8.28+commit.7893614a, OptimizationUsed 1, Runs 200, EVMVersion cancun, SimilarMatch empty, SourceCode nonempty. Recruiter-facing: https://sepolia.basescan.org/address/0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2#code. HTML scrape of Basescan returned 403 WAF from the operator box.",
+      "onChainName": "Atlas Forge Permissioned Test Token",
+      "onChainSymbol": "AFPT",
+      "registry": "0x79f550d079065Ef10861F957c7F9febDE8929d8e",
+      "compliance": "0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A"
+    }
+  },
+  "roles": {
+    "DEFAULT_ADMIN": "0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9",
+    "ISSUER": "0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9",
+    "FREEZER": "0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9",
+    "RECOVERY": "0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9"
+  },
+  "holders": {
+    "ALICE": "0x24A70d01E3440A8B291a0eAE148ADab6640779B1",
+    "BOB": "0x6BA6855b0C35A556A334326B5D8Eb494830e0dE5",
+    "CHARLIE": "0xadD8E3672B6EFBA5eEa6a317e144D5D4F8E07813",
+    "UNAUTHORIZED": "0xadD8E3672B6EFBA5eEa6a317e144D5D4F8E07813"
+  },
+  "ackRoleOverlap": true,
+  "roleOverlapNote": "ADMIN=ISSUER=FREEZER=RECOVERY is Hobie's Agentic Swarm Marketplace operator EOA 0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9. Showcase wallet for testnet validation. Not production IAM. ALICE/BOB/CHARLIE are separate rehearsal actors (same addresses as Ethereum Sepolia rehearsal). CHARLIE=UNAUTHORIZED (same address).",
+  "broadcastTxHash": "0x60a67742dea7a293a499fb4ff816a40949c98aa98c28398f8609f93c424c2e28",
+  "etherscan": {
+    "identityRegistry": "https://sepolia.basescan.org/address/0x79f550d079065Ef10861F957c7F9febDE8929d8e#code",
+    "compliance": "https://sepolia.basescan.org/address/0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A#code",
+    "permissionedToken": "https://sepolia.basescan.org/address/0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2#code"
+  }
+}

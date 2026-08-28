@@ -7,17 +7,18 @@ Permissioned ERC-20 with freeze, recovery, and an identity registry. Portfolio s
 | Recruiter fact (20s) | Value |
 | --- | --- |
 | Local tests | `forge test` — CI badge above is [`.github/workflows/ci.yml`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/blob/main/.github/workflows/ci.yml) (`forge test` + `forge fmt --check`) |
-| Evidence commit | [`a825081`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/a82508147da003a5ab98e40f7455812cc5cd2aa6) (`a82508147da003a5ab98e40f7455812cc5cd2aa6`) |
+| Evidence commit | [`a825081`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/a82508147da003a5ab98e40f7455812cc5cd2aa6) (`a82508147da003a5ab98e40f7455812cc5cd2aa6`) Ethereum Sepolia; this PR is Base Sepolia |
 | Deploy bytecode | [`0807cda`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f) (`0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f`) |
 | Network | Ethereum Sepolia (chainId 11155111) |
 | On-chain label | Atlas Forge Permissioned Test Token / **AFPT** (label only, not a dollar) |
 | Etherscan | **Exact Match** confirmed 2026-08-28 — [IdentityRegistry](https://sepolia.etherscan.io/address/0x57B7434E34702fFEA2825D6F23B651c20207E814#code) · [Compliance](https://sepolia.etherscan.io/address/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12#code) · [PermissionedToken](https://sepolia.etherscan.io/address/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759#code) |
 | Sourcify (additional) | `exact_match` — [IdentityRegistry](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) · [Compliance](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) · [PermissionedToken](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) |
-| Overall | **TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE** |
+| Base Sepolia | chainId 84532 · operator [`0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9`](https://sepolia.basescan.org/address/0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9) · **AFPT** (not an issuance) · Basescan Exact Match [IdentityRegistry](https://sepolia.basescan.org/address/0x79f550d079065Ef10861F957c7F9febDE8929d8e#code) · [Compliance](https://sepolia.basescan.org/address/0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A#code) · [PermissionedToken](https://sepolia.basescan.org/address/0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2#code) |
+| Overall | **TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE** (Ethereum Sepolia and Base Sepolia; not a mainnet deploy) |
 
 > **Honest label.** This is **NOT** legally compliant securities infrastructure, **NOT** a broker-dealer product, **NOT** ERC-3643 certified, and **NOT** a KYC vendor integration. It is an engineering sketch of restriction + registry patterns a hiring manager can `forge test` in three commands. No fake AUM, no fake audit, no fake clients.
 
-This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no paid audit, no ERC-3643 certificate, and no AUM. A Sepolia engineering rehearsal exists; it is **not** a live issuance. Internal review notes live in [docs/findings/](docs/findings/README.md). `forge test` is the local deliverable.
+This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no paid audit, no ERC-3643 certificate, and no AUM. Ethereum Sepolia and Base Sepolia engineering rehearsals exist; neither is a live issuance. There is no mainnet deploy. Internal review notes live in [docs/findings/](docs/findings/README.md). `forge test` is the local deliverable.
 
 ## Why this is not a tutorial ERC-20
 
@@ -120,14 +121,39 @@ issuance.
 
 On-chain label: Atlas Forge Permissioned Test Token / AFPT. **Etherscan Exact
 Match** confirmed 2026-08-28. AFPT is not a dollar. This is not an issuance, not
-an audit, not ERC-3643, and not KYC. Base Sepolia was **not** executed. Full
-evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md),
+an audit, not ERC-3643, and not KYC. Full evidence:
+[PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md),
 [deployments/sepolia.json](deployments/sepolia.json). Overall:
+**TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE**.
+
+## Public testnet engineering rehearsal on Base Sepolia
+
+Public testnet facts. Recruiter-facing proof is the Basescan `#code` pages
+below (forge `Pass - Verified` + Etherscan v2 API, SimilarMatch empty,
+confirmed 2026-08-28). Sourcify `exact_match` is additional. This is **not**
+an issuance and **not** a mainnet deploy. Operator EOA
+`0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9` holds ADMIN/ISSUER/FREEZER/RECOVERY
+(`ACK_ROLE_OVERLAP=true`; showcase wallet, not production IAM).
+
+| Field | Value |
+| --- | --- |
+| Network | Base Sepolia (chainId 84532) |
+| Date | 2026-08-28 UTC |
+| Deploy bytecode | [`0807cda`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f) (`src/` unchanged) |
+| Operator | [`0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9`](https://sepolia.basescan.org/address/0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9) |
+| IdentityRegistry | [`0x79f550d079065Ef10861F957c7F9febDE8929d8e`](https://sepolia.basescan.org/address/0x79f550d079065Ef10861F957c7F9febDE8929d8e#code) (Basescan Exact Match; [Sourcify](https://repo.sourcify.dev/84532/0x79f550d079065Ef10861F957c7F9febDE8929d8e) additional) |
+| Compliance | [`0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A`](https://sepolia.basescan.org/address/0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A#code) (Basescan Exact Match; [Sourcify](https://repo.sourcify.dev/84532/0x93527A8eFd77bCcFb1D539757dcC2150321BbC4A) additional) |
+| PermissionedToken | [`0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2`](https://sepolia.basescan.org/address/0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2#code) (Basescan Exact Match; [Sourcify](https://repo.sourcify.dev/84532/0xaa923f43b48eCAC2FD8AB16f65DEEFbA9e3d5Df2) additional) |
+
+On-chain label: Atlas Forge Permissioned Test Token / AFPT. AFPT is not a
+dollar. This is not an issuance, not an audit, not ERC-3643, and not KYC.
+Full evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md),
+[deployments/base-sepolia.json](deployments/base-sepolia.json). Overall:
 **TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE**.
 
 ## Deployments
 
-Sepolia rehearsal addresses are in [deployments/sepolia.json](deployments/sepolia.json). That rehearsal is **not** a live issuance. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `AFPT` is a label, not a USD claim.
+Ethereum Sepolia rehearsal addresses are in [deployments/sepolia.json](deployments/sepolia.json). Base Sepolia rehearsal addresses are in [deployments/base-sepolia.json](deployments/base-sepolia.json). Neither rehearsal is a live issuance. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `AFPT` is a label, not a USD claim.
 
 ## Honest limitations (first-class)
 
