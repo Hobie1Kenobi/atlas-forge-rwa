@@ -33,7 +33,8 @@ Not production ready. Not audited. Not a compliant RWA product.
 | --- | --- |
 | Repo | https://github.com/Hobie1Kenobi/atlas-forge-rwa |
 | Branch | `testnet-sepolia-evidence` |
-| Git commit deployed from | `0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f` |
+| Git commit deployed from | `0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f` (deploy bytecode) |
+| Evidence package commit | `a82508147da003a5ab98e40f7455812cc5cd2aa6` (public testnet report on `main`) |
 | Network | Ethereum Sepolia |
 | chainId | 11155111 |
 | Deployed at (UTC) | 2026-08-28T01:26:50Z approximately (block 11581611) |
@@ -111,6 +112,7 @@ failures are **positive evidence** (PASS). Full table:
 | UNAUTHORIZED_SET_VERIFIED_FAIL | UNAUTHORIZED_SET_VERIFIED_REVERT | `0xd43cfa1f91a23ee7984a8f934f51033c688b2faf257d1f24001fe9020f847eed` |
 | UNAUTHORIZED_FORCE_TRANSFER_FAIL | UNAUTHORIZED_FORCE_TRANSFER_REVERT | `0x6aa426ec83883c29d1e7b0c9c7ae15bc8539e6a04ed9816a0a02b61216711ef3` |
 | UNAUTHORIZED_BURN_FAIL | UNAUTHORIZED_BURN_REVERT | `0x41dbe3c99ed669a2b45ce58c653f72a2217faf71d61a0213d7124f9e7b1fea08` |
+| UNAUTHORIZED_UNFREEZE_FAIL | UNAUTHORIZED_UNFREEZE_REVERT | `0xfac87c8019bc836738dc28f4361befc0fc5c5d45cb1fc93a6dd469bbf7594adf` |
 | TRANSFER_UNVERIFIED_FAIL ALICE→CHARLIE | TRANSFER_UNVERIFIED_ALICE_CHARLIE_REVERT | `0xbb7c759bf93f96d4d548866fceafc7262d8c6965794fdc6ba4925cbaa82ff730` |
 | TRANSFER_UNVERIFIED_FAIL CHARLIE→ALICE | TRANSFER_UNVERIFIED_CHARLIE_ALICE_REVERT | `0x17fcd15a55fff10e277ac5116c5f202425dcd11a895569a2f7e5dd5b67b95f1f` |
 | FROZEN_SEND_FAIL | FROZEN_ALICE_TO_BOB_REVERT | `0x2efe8aa311146402be477ffd558a15c523196e16df8caabce2060472b8baa968` |
@@ -128,12 +130,15 @@ not invented.**
 | DEPLOY_ROLE_GRANTS | PASS | Constructors grant roles; recorded against the token deploy tx |
 | ROLE_ADMIN / ROLE_ISSUER / ROLE_FREEZER / ROLE_RECOVERY | PASS | View checks of disclosed overlap |
 | IDENTITY_ALICE_UNVERIFIED / IDENTITY_BOB_UNVERIFIED | PASS | View checks before VERIFY_* |
-| UNAUTHORIZED_UNFREEZE_REVERT | SKIPPED | No unauthorized-unfreeze revert tx was recorded; smoke broadcast matrix did not include this step |
 | SUPPLY_LEDGER_MATCH | PASS | Observed supply matches the mint/burn formula below |
 
-PUBLIC TESTNET BEHAVIORAL MATRIX remains **PASS**. The skipped unfreeze-auth
-row is disclosed, not scored as a matrix failure, and is not a manufactured PASS
-on a missing hash.
+`UNAUTHORIZED_UNFREEZE_REVERT` moved **SKIPPED → PASS**. Unfreeze-deny tx
+`0xfac87c8019bc836738dc28f4361befc0fc5c5d45cb1fc93a6dd469bbf7594adf`
+(status 0). Caller CHARLIE/UNAUTHORIZED
+`0xadD8E3672B6EFBA5eEa6a317e144D5D4F8E07813`, target ALICE
+`0x24A70d01E3440A8B291a0eAE148ADab6640779B1`. Alice remained `frozen=true`
+after. PUBLIC TESTNET BEHAVIORAL MATRIX remains **PASS**. OVERALL remains
+**TESTNET REHEARSAL INCOMPLETE** (Etherscan Exact Match is not confirmed).
 
 ## Supply ledger / on-chain state
 

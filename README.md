@@ -1,8 +1,21 @@
 # Atlas Forge RWA
 
-> **Honest label.** This is **NOT** legally compliant securities infrastructure, **NOT** a broker-dealer product, **NOT** ERC-3643 certified, and **NOT** a KYC vendor integration. It is an engineering sketch of restriction + registry patterns a hiring manager can `forge test` in three commands. No fake AUM, no fake audit, no fake clients.
+[![forge test + fmt](https://github.com/Hobie1Kenobi/atlas-forge-rwa/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hobie1Kenobi/atlas-forge-rwa/actions/workflows/ci.yml)
 
-Permissioned ERC-20 with transfer restrictions, freeze, recovery, and an identity registry. Written as portfolio proof for **Smart Contract Engineer** / **RWA Tokenization** roles — not a tutorial token and not a live issuance.
+Permissioned ERC-20 with freeze, recovery, and an identity registry. Portfolio sketch for **Smart Contract Engineer** / **RWA Tokenization** roles. **Not** an issuance, **not** an audit, **not** ERC-3643, **not** a USD peg.
+
+| Recruiter fact (20s) | Value |
+| --- | --- |
+| Local tests | `forge test` — CI badge above is [`.github/workflows/ci.yml`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/blob/main/.github/workflows/ci.yml) (`forge test` + `forge fmt --check`) |
+| Evidence commit | [`a825081`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/a82508147da003a5ab98e40f7455812cc5cd2aa6) (`a82508147da003a5ab98e40f7455812cc5cd2aa6`) |
+| Deploy bytecode | [`0807cda`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f) (`0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f`) |
+| Network | Ethereum Sepolia (chainId 11155111) |
+| On-chain label | Atlas Forge Permissioned Test Token / **AFPT** (label only, not a dollar) |
+| Sourcify (first) | `exact_match` — [IdentityRegistry](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) · [Compliance](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) · [PermissionedToken](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) |
+| Etherscan | **not verified** — Exact Match is **not** confirmed |
+| Overall | **TESTNET REHEARSAL INCOMPLETE** |
+
+> **Honest label.** This is **NOT** legally compliant securities infrastructure, **NOT** a broker-dealer product, **NOT** ERC-3643 certified, and **NOT** a KYC vendor integration. It is an engineering sketch of restriction + registry patterns a hiring manager can `forge test` in three commands. No fake AUM, no fake audit, no fake clients.
 
 This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no paid audit, no ERC-3643 certificate, and no AUM. A Sepolia engineering rehearsal exists; it is **not** a live issuance. Internal review notes live in [docs/findings/](docs/findings/README.md). `forge test` is the local deliverable.
 
@@ -34,7 +47,7 @@ Roles (AccessControl, single admin in v1):
 
 `forceTransfer` moves balances. It does not mint or burn. It calls `ERC20._update` directly so it bypasses verified, freeze, max-balance, and tags — a lost-key recovery can land tokens on a replacement wallet. User transfers never get that bypass.
 
-v1 constructors grant `DEFAULT_ADMIN` plus ISSUER / FREEZER / RECOVERY. A production fork should put DEFAULT_ADMIN on a timelock (atlas-forge-vault already shows the 48h pattern). This sketch does not duplicate that timelock. Default deploy name `afpUSD` is a **label**, not a USD peg.
+v1 constructors grant `DEFAULT_ADMIN` plus ISSUER / FREEZER / RECOVERY. A production fork should put DEFAULT_ADMIN on a timelock (atlas-forge-vault already shows the 48h pattern). This sketch does not duplicate that timelock. Default deploy name `AFPT` is a **label**, not a USD peg. The old `afpUSD` fallback looked like a dollar claim and was a mistake-class risk.
 
 ## Install and test
 
@@ -88,25 +101,26 @@ Not gas-golfed. `PermissionedToken` runtime size **4,872 bytes** (solc 0.8.28, o
 
 Internal A5 notes (not a paid audit): [docs/findings/README.md](docs/findings/README.md).
 
-## Public testnet engineering deployment verified on Ethereum Sepolia
+## Public testnet engineering rehearsal on Ethereum Sepolia
 
-Public testnet engineering deployment verified on Ethereum Sepolia.
+Public testnet facts. Sourcify links first. **Etherscan is not verified.**
 
 | Field | Value |
 | --- | --- |
 | Network | Ethereum Sepolia (chainId 11155111) |
 | Date | 2026-08-27 CT / 2026-08-28 UTC |
-| Commit | `0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f` |
+| Evidence commit | [`a825081`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/a82508147da003a5ab98e40f7455812cc5cd2aa6) |
+| Deploy bytecode | [`0807cda`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f) |
 | Local tests | `forge test` 78 passed; intense profile 78 passed |
 | IdentityRegistry | [`0x57B7434E34702fFEA2825D6F23B651c20207E814`](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) (Sourcify `exact_match`) |
 | Compliance | [`0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12`](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) (Sourcify `exact_match`) |
 | PermissionedToken | [`0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759`](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) (Sourcify `exact_match`) |
 
-On-chain label: Atlas Forge Permissioned Test Token / AFPT. **Etherscan is not verified** (Sourcify-to-Etherscan relay hit a daily cap). This is not a USD claim, not an audit, and not ERC-3643. Full evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md), [deployments/sepolia.json](deployments/sepolia.json).
+On-chain label: Atlas Forge Permissioned Test Token / AFPT. **Etherscan is not verified** (Exact Match is not confirmed). This is not a USD claim, not an audit, and not ERC-3643. Full evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md), [deployments/sepolia.json](deployments/sepolia.json). Overall remains **TESTNET REHEARSAL INCOMPLETE**.
 
 ## Deployments
 
-Sepolia rehearsal addresses are in [deployments/sepolia.json](deployments/sepolia.json). That rehearsal is **not** a live issuance. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `afpUSD` is a label, not a USD claim.
+Sepolia rehearsal addresses are in [deployments/sepolia.json](deployments/sepolia.json). That rehearsal is **not** a live issuance. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `AFPT` is a label, not a USD claim.
 
 ## Honest limitations (first-class)
 
@@ -115,7 +129,7 @@ Sepolia rehearsal addresses are in [deployments/sepolia.json](deployments/sepoli
 - Tag allowlist is a demo `bytes32` switch. It is not geofencing, not OFAC, not accredited-investor logic.
 - Issuer-is-god: mint, burn, freeze, and `forceTransfer` can seize or inflate. That is the design.
 - v1 DEFAULT_ADMIN is a single address, not a 48h timelock.
-- Default token name/symbol `afpUSD` is a label, not a USD peg or AUM figure.
+- Default token name/symbol `AFPT` is a label, not a USD peg or AUM figure. The old `afpUSD` string looked like a dollar claim (mistake-class risk).
 - No pause, no upgradeability, no snapshot/dividends, no on-chain identity claims, no privacy.
 - No bug bounty, no on-call, no mainnet invariant bot. No fake AUM.
 

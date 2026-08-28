@@ -31,7 +31,7 @@ abstract contract Fixture is Test {
         registry = new IdentityRegistry(admin, issuer);
         compliance = new Compliance(admin, issuer);
         token = new PermissionedToken(
-            "Atlas Forge Permissioned USD", "afpUSD", admin, issuer, freezer, recovery, registry, compliance
+            "Atlas Forge Permissioned Test Token", "AFPT", admin, issuer, freezer, recovery, registry, compliance
         );
 
         vm.startPrank(issuer);

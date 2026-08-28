@@ -76,9 +76,9 @@ contract AcceptedDesignTest is Fixture {
         assertFalse(token.hasRole(token.RECOVERY_ROLE(), admin));
     }
 
-    function test_accepted_deploy_name_afpUSD_is_label_not_usd_claim() public view {
-        assertEq(token.name(), "Atlas Forge Permissioned USD");
-        assertEq(token.symbol(), "afpUSD");
+    function test_accepted_deploy_name_AFPT_is_label_not_usd_claim() public view {
+        assertEq(token.name(), "Atlas Forge Permissioned Test Token");
+        assertEq(token.symbol(), "AFPT");
         assertEq(token.decimals(), 18);
     }
 
@@ -135,7 +135,7 @@ contract DeployScriptTest is Test {
 
         Deploy script = new Deploy();
         (address registryAddr, address complianceAddr, address tokenAddr) =
-            script.deploy(admin, issuer, freezer, recovery, "Atlas Forge Permissioned USD", "afpUSD");
+            script.deploy(admin, issuer, freezer, recovery, "Atlas Forge Permissioned Test Token", "AFPT");
 
         IdentityRegistry registry = IdentityRegistry(registryAddr);
         Compliance compliance = Compliance(complianceAddr);
@@ -153,16 +153,17 @@ contract DeployScriptTest is Test {
         assertTrue(token.hasRole(token.FREEZER_ROLE(), freezer));
         assertTrue(token.hasRole(token.RECOVERY_ROLE(), recovery));
 
-        assertEq(token.name(), "Atlas Forge Permissioned USD");
-        assertEq(token.symbol(), "afpUSD");
+        assertEq(token.name(), "Atlas Forge Permissioned Test Token");
+        assertEq(token.symbol(), "AFPT");
     }
 
     function test_deploy_default_labels_match_env_example() public {
         Deploy script = new Deploy();
         address admin = makeAddr("admin");
-        (,, address tokenAddr) = script.deploy(admin, admin, admin, admin, "Atlas Forge Permissioned USD", "afpUSD");
+        (,, address tokenAddr) =
+            script.deploy(admin, admin, admin, admin, "Atlas Forge Permissioned Test Token", "AFPT");
         PermissionedToken token = PermissionedToken(tokenAddr);
-        assertEq(token.name(), "Atlas Forge Permissioned USD");
-        assertEq(token.symbol(), "afpUSD");
+        assertEq(token.name(), "Atlas Forge Permissioned Test Token");
+        assertEq(token.symbol(), "AFPT");
     }
 }

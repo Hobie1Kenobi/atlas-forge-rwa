@@ -13,11 +13,11 @@ import { PermissionedToken } from "../src/PermissionedToken.sol";
 /// production fork should split those roles and put DEFAULT_ADMIN on a timelock —
 /// this script does not.
 ///
-/// Solidity `envOr` fallbacks remain `Atlas Forge Permissioned USD` / `afpUSD` so existing
-/// tests that lock those strings stay honest. The **documented public testnet path**
-/// sets `TOKEN_NAME` / `TOKEN_SYMBOL` from `.env.example` to
-/// `Atlas Forge Permissioned Test Token` / `AFPT`. None of these strings is a USD peg,
-/// reserve, redeem, or securities claim.
+/// Solidity `envOr` fallbacks are `Atlas Forge Permissioned Test Token` / `AFPT`.
+/// The old `Atlas Forge Permissioned USD` / `afpUSD` fallback was a mistake-class
+/// risk: it looks like a dollar claim. These strings are labels only — not a USD
+/// peg, reserve, redeem, or securities claim. The constructor still takes
+/// `name_` / `symbol_` as arguments; the deployed Sepolia token is already AFPT.
 ///
 /// This repo is not deployed. Running the script does not make the token a security.
 contract Deploy is Script {
@@ -26,8 +26,8 @@ contract Deploy is Script {
         address issuer = vm.envOr("ISSUER", admin);
         address freezer = vm.envOr("FREEZER", admin);
         address recovery = vm.envOr("RECOVERY", admin);
-        string memory name_ = vm.envOr("TOKEN_NAME", string("Atlas Forge Permissioned USD"));
-        string memory symbol_ = vm.envOr("TOKEN_SYMBOL", string("afpUSD"));
+        string memory name_ = vm.envOr("TOKEN_NAME", string("Atlas Forge Permissioned Test Token"));
+        string memory symbol_ = vm.envOr("TOKEN_SYMBOL", string("AFPT"));
 
         vm.startBroadcast();
         (address registry, address compliance, address token) = deploy(admin, issuer, freezer, recovery, name_, symbol_);
@@ -40,8 +40,7 @@ contract Deploy is Script {
         console2.log("ISSUER", issuer);
         console2.log("FREEZER", freezer);
         console2.log("RECOVERY", recovery);
-        console2.log("Name/symbol are labels, not a USD claim.");
-        console2.log("Public rehearsal should set TOKEN_NAME/TOKEN_SYMBOL to AFPT via env.");
+        console2.log("Name/symbol are AFPT labels, not a USD claim.");
         console2.log("Not a live issuance. Addresses above are this broadcast only.");
     }
 

@@ -12,8 +12,9 @@ Reviewer posture: defensive findings against the **stated** threat model
 capabilities, not hidden backdoors. No Critical or High issues were identified
 on this code. No exploit payloads are included.
 
-There is **no AUM**, **no deployment**, **no transfer agent**, and **no claim** that
-`afpUSD` is dollars.
+There is **no AUM**, **no transfer agent**, and **no claim** that `AFPT` (or the
+retired `afpUSD` label) is dollars. A Sepolia engineering rehearsal exists; it
+is not a live issuance.
 
 ## Method
 
@@ -35,7 +36,7 @@ There is **no AUM**, **no deployment**, **no transfer agent**, and **no claim** 
 | [AFR-05](AFR-05.md) | Informational | Accepted residual | ISSUER mint/burn skip the verified-registry check |
 | [AFR-06](AFR-06.md) | Informational | Accepted residual | `forceTransfer` bypasses freeze, registry, cap, and tags |
 | [AFR-07](AFR-07.md) | Informational | Accepted residual | v1 `DEFAULT_ADMIN` is a single EOA, not a timelock |
-| [AFR-08](AFR-08.md) | Informational | Accepted residual | Default deploy name/symbol `afpUSD` is a label, not a USD claim |
+| [AFR-08](AFR-08.md) | Informational | Accepted residual | Default deploy name/symbol `AFPT` is a label, not a USD claim (`afpUSD` retired as a mistake-class risk) |
 | [AFR-09](AFR-09.md) | Informational | Accepted residual | `ISSUER_ROLE` is per-contract; token issuer ≠ registry issuer |
 | [AFR-10](AFR-10.md) | Informational | Accepted residual | `transferFrom` gates `from`/`to`, not the spender |
 | [AFR-11](AFR-11.md) | Informational | Accepted residual | `tagsEnforced` default-denies the zero tag |
