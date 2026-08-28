@@ -12,29 +12,31 @@ figure.
 `src/` was **not** modified. Evidence JSON is hand-written and sanitized. Foundry
 `broadcast/` / `run-latest` JSON was **not** committed (it can contain secrets).
 Foundry `contractName` in broadcast JSON was misaligned; contract identities
-below trust on-chain receipts and Sourcify exact-match pages.
+below trust on-chain receipts, Etherscan Exact Match `#code` pages, and
+Sourcify `exact_match` pages (additional).
 
 ## Release gate (honest)
 
 | Gate | Result |
 | --- | --- |
 | PUBLIC TESTNET BEHAVIORAL MATRIX | **PASS** |
-| SOURCIFY | **PASS** (all three `exact_match`) |
-| ETHERSCAN | **FAIL** (Sourcify-to-Etherscan relay hit daily 500 submission cap). Do not mark Etherscan verified. |
-| EVIDENCE PACKAGE | this PR |
-| OVERALL | **TESTNET REHEARSAL INCOMPLETE** until Etherscan verification succeeds **OR** the operator accepts Sourcify-only. This report does **not** manufacture a full PASS. |
+| SOURCIFY | **PASS** (all three `exact_match`; additional proof) |
+| ETHERSCAN | **PASS** — Exact Match confirmed 2026-08-28 via `forge verify-contract --chain sepolia --verifier etherscan --watch` (solc 0.8.28, optimizer 200, cancun). Recruiter-facing proof. |
+| EVIDENCE PACKAGE | `a825081` (behavioral). This PR is the verification-status flip. |
+| OVERALL | **TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE** |
 | Base Sepolia | **NOT EXECUTED** |
 
-Not production ready. Not audited. Not a compliant RWA product.
+Still **not** an issuance, **not** an audit, **not** ERC-3643, **not** KYC, **not** a USD peg. Not production ready. Not a compliant RWA product.
 
 ## Environment
 
 | Field | Value |
 | --- | --- |
 | Repo | https://github.com/Hobie1Kenobi/atlas-forge-rwa |
-| Branch | `testnet-sepolia-evidence` |
+| Branch | `cursor/etherscan-exact-match-docs-46f8` (verification-status flip) |
 | Git commit deployed from | `0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f` (deploy bytecode) |
 | Evidence package commit | `a82508147da003a5ab98e40f7455812cc5cd2aa6` (public testnet report on `main`) |
+| Etherscan Exact Match | confirmed 2026-08-28 |
 | Network | Ethereum Sepolia |
 | chainId | 11155111 |
 | Deployed at (UTC) | 2026-08-28T01:26:50Z approximately (block 11581611) |
@@ -63,11 +65,11 @@ roles remain issuer-is-god (AFR-04 through AFR-07), not hidden vulnerabilities.
 
 ## On-chain deployment
 
-| Contract | Address | Bytecode | Deploy tx | Block | gasUsed | Sourcify | Etherscan |
+| Contract | Address | Bytecode | Deploy tx | Block | gasUsed | Etherscan | Sourcify |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| IdentityRegistry | `0x57B7434E34702fFEA2825D6F23B651c20207E814` | 1535 bytes | `0x0b0dc5791e85870d925a324e81bb358d5279c9669065523c18cfe853ba0c130e` | 11581611 | 441695 | [exact_match](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) | **NOT verified** (daily cap) |
-| Compliance | `0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12` | 2285 bytes | `0xaa85254e2cb02a4a5c9b7f41063993ed0c8e2bd117f26fe76d0f17c38b5690fe` | 11581611 | 604023 | [exact_match](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) | **NOT verified** (daily cap) |
-| PermissionedToken | `0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759` | 4872 bytes | `0x714b930896440a17d429c0cb6964ef58ee96f7869b2436c8f31a52b6f6edd18c` | 11581611 | 1319019 | [exact_match](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) | **NOT verified** (daily cap) |
+| IdentityRegistry | `0x57B7434E34702fFEA2825D6F23B651c20207E814` | 1535 bytes | `0x0b0dc5791e85870d925a324e81bb358d5279c9669065523c18cfe853ba0c130e` | 11581611 | 441695 | [Exact Match](https://sepolia.etherscan.io/address/0x57B7434E34702fFEA2825D6F23B651c20207E814#code) | [exact_match](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) (additional) |
+| Compliance | `0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12` | 2285 bytes | `0xaa85254e2cb02a4a5c9b7f41063993ed0c8e2bd117f26fe76d0f17c38b5690fe` | 11581611 | 604023 | [Exact Match](https://sepolia.etherscan.io/address/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12#code) | [exact_match](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) (additional) |
+| PermissionedToken | `0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759` | 4872 bytes | `0x714b930896440a17d429c0cb6964ef58ee96f7869b2436c8f31a52b6f6edd18c` | 11581611 | 1319019 | [Exact Match](https://sepolia.etherscan.io/address/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759#code) | [exact_match](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) (additional) |
 
 On-chain `name()` / `symbol()`: **Atlas Forge Permissioned Test Token** / **AFPT**.
 `registry()` and `compliance()` on the token match the two addresses above.
@@ -137,8 +139,9 @@ not invented.**
 (status 0). Caller CHARLIE/UNAUTHORIZED
 `0xadD8E3672B6EFBA5eEa6a317e144D5D4F8E07813`, target ALICE
 `0x24A70d01E3440A8B291a0eAE148ADab6640779B1`. Alice remained `frozen=true`
-after. PUBLIC TESTNET BEHAVIORAL MATRIX remains **PASS**. OVERALL remains
-**TESTNET REHEARSAL INCOMPLETE** (Etherscan Exact Match is not confirmed).
+after. PUBLIC TESTNET BEHAVIORAL MATRIX remains **PASS**. OVERALL is
+**TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE** (Etherscan Exact Match
+confirmed 2026-08-28).
 
 ## Supply ledger / on-chain state
 
@@ -168,15 +171,18 @@ listed.
 
 ## Verification
 
-- **Sourcify:** `exact_match` for all three contracts. Links in the deploy table.
-- **Etherscan:** **NOT verified** for all three. Sourcify-to-Etherscan relay hit
-  the daily 500 submission cap. Do not claim Etherscan verification.
+- **Etherscan:** **Exact Match** for all three, confirmed 2026-08-28 via
+  `forge verify-contract --chain sepolia --verifier etherscan --watch`
+  (`Pass - Verified`). Compiler v0.8.28+commit.7893614a, optimizer 200, EVM
+  cancun, SimilarMatch empty. HTML on each address page: `Source Code Verified`
+  + `Exact Match`. Recruiter-facing proof. Links in the deploy table (`#code`).
+- **Sourcify:** `exact_match` for all three (additional). Links in the deploy table.
 
 ## Secret scan
 
-This evidence PR commits public addresses, public tx hashes, and Sourcify URLs
-only. **No** `.env`, keystores, private keys, API keys, or Foundry
-`broadcast/` / `run-latest` JSON.
+This evidence PR commits public addresses, public tx hashes, Etherscan Exact
+Match `#code` URLs, and Sourcify URLs only. **No** `.env`, keystores, private
+keys, API keys, or Foundry `broadcast/` / `run-latest` JSON.
 
 `.gitignore` still covers `.env`, `.env.*` (`!.env.example`), `*.pem`, `*.key`,
 `broadcast/`.
@@ -186,5 +192,6 @@ only. **No** `.env`, keystores, private keys, API keys, or Foundry
 Public testnet engineering rehearsal only.
 Not a product. Not an audit. Not ERC-3643 certified. Not KYC.
 Not USD-backed. Not production ready. Not a compliant RWA issuance.
-Role overlap is a faucet limitation. Etherscan verification did not succeed.
-OVERALL remains **TESTNET REHEARSAL INCOMPLETE**.
+Role overlap is a faucet limitation. Base Sepolia was **not** executed.
+Etherscan Exact Match confirmed 2026-08-28. OVERALL is
+**TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE**.

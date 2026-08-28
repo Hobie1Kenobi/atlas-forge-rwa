@@ -11,9 +11,9 @@ Permissioned ERC-20 with freeze, recovery, and an identity registry. Portfolio s
 | Deploy bytecode | [`0807cda`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f) (`0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f`) |
 | Network | Ethereum Sepolia (chainId 11155111) |
 | On-chain label | Atlas Forge Permissioned Test Token / **AFPT** (label only, not a dollar) |
-| Sourcify (first) | `exact_match` — [IdentityRegistry](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) · [Compliance](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) · [PermissionedToken](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) |
-| Etherscan | **not verified** — Exact Match is **not** confirmed |
-| Overall | **TESTNET REHEARSAL INCOMPLETE** |
+| Etherscan | **Exact Match** confirmed 2026-08-28 — [IdentityRegistry](https://sepolia.etherscan.io/address/0x57B7434E34702fFEA2825D6F23B651c20207E814#code) · [Compliance](https://sepolia.etherscan.io/address/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12#code) · [PermissionedToken](https://sepolia.etherscan.io/address/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759#code) |
+| Sourcify (additional) | `exact_match` — [IdentityRegistry](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) · [Compliance](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) · [PermissionedToken](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) |
+| Overall | **TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE** |
 
 > **Honest label.** This is **NOT** legally compliant securities infrastructure, **NOT** a broker-dealer product, **NOT** ERC-3643 certified, and **NOT** a KYC vendor integration. It is an engineering sketch of restriction + registry patterns a hiring manager can `forge test` in three commands. No fake AUM, no fake audit, no fake clients.
 
@@ -103,7 +103,9 @@ Internal A5 notes (not a paid audit): [docs/findings/README.md](docs/findings/RE
 
 ## Public testnet engineering rehearsal on Ethereum Sepolia
 
-Public testnet facts. Sourcify links first. **Etherscan is not verified.**
+Public testnet facts. Recruiter-facing proof is **Etherscan Exact Match**
+(confirmed 2026-08-28). Sourcify `exact_match` is additional. This is **not** an
+issuance.
 
 | Field | Value |
 | --- | --- |
@@ -112,11 +114,16 @@ Public testnet facts. Sourcify links first. **Etherscan is not verified.**
 | Evidence commit | [`a825081`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/a82508147da003a5ab98e40f7455812cc5cd2aa6) |
 | Deploy bytecode | [`0807cda`](https://github.com/Hobie1Kenobi/atlas-forge-rwa/commit/0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f) |
 | Local tests | `forge test` 78 passed; intense profile 78 passed |
-| IdentityRegistry | [`0x57B7434E34702fFEA2825D6F23B651c20207E814`](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) (Sourcify `exact_match`) |
-| Compliance | [`0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12`](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) (Sourcify `exact_match`) |
-| PermissionedToken | [`0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759`](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) (Sourcify `exact_match`) |
+| IdentityRegistry | [`0x57B7434E34702fFEA2825D6F23B651c20207E814`](https://sepolia.etherscan.io/address/0x57B7434E34702fFEA2825D6F23B651c20207E814#code) (Etherscan Exact Match; [Sourcify](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) additional) |
+| Compliance | [`0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12`](https://sepolia.etherscan.io/address/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12#code) (Etherscan Exact Match; [Sourcify](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) additional) |
+| PermissionedToken | [`0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759`](https://sepolia.etherscan.io/address/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759#code) (Etherscan Exact Match; [Sourcify](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) additional) |
 
-On-chain label: Atlas Forge Permissioned Test Token / AFPT. **Etherscan is not verified** (Exact Match is not confirmed). This is not a USD claim, not an audit, and not ERC-3643. Full evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md), [deployments/sepolia.json](deployments/sepolia.json). Overall remains **TESTNET REHEARSAL INCOMPLETE**.
+On-chain label: Atlas Forge Permissioned Test Token / AFPT. **Etherscan Exact
+Match** confirmed 2026-08-28. AFPT is not a dollar. This is not an issuance, not
+an audit, not ERC-3643, and not KYC. Base Sepolia was **not** executed. Full
+evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md),
+[deployments/sepolia.json](deployments/sepolia.json). Overall:
+**TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE**.
 
 ## Deployments
 
