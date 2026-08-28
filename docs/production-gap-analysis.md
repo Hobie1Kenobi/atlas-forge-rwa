@@ -16,7 +16,7 @@ See `docs/threat-model.md` and AFR-04 through AFR-11.
 ## PUBLIC TESTNET COMPLETE (engineering rehearsal)
 
 These items are in-repo and can be exercised on Sepolia **after** a real
-broadcast (this PR does not broadcast):
+broadcast:
 
 | Item | Status |
 | --- | --- |
@@ -31,8 +31,8 @@ broadcast (this PR does not broadcast):
 | AFPT / Atlas Forge Permissioned Test Token labeling on the documented testnet path | `.env.example` + script README |
 | Evidence templates (no fabricated hashes/addresses) | `artifacts/*schema.json`, `deployments/sepolia.example.json` |
 
-A passing local `forge test` and a future Sepolia smoke **do not** make this a
-product.
+A passing local `forge test` and a Sepolia smoke **do not** make this a
+product. Sepolia rehearsal ran 2026-08-28 with role overlap and no Etherscan verification yet.
 
 ## MAINNET / REAL RWA NOT READY
 
@@ -71,5 +71,5 @@ product.
 
 ## Honest eight-minute read
 
-Not deployed. Not a product. Not an audit. Not ERC-3643. Not USD. Not KYC.
-A future Sepolia smoke would still be an engineering rehearsal.
+Not a product. Not an audit. Not ERC-3643. Not USD. Not KYC.
+A Sepolia smoke is still an engineering rehearsal.
