@@ -7,8 +7,8 @@ import { IdentityRegistry } from "../../src/IdentityRegistry.sol";
 import { Compliance } from "../../src/Compliance.sol";
 import { PermissionedToken } from "../../src/PermissionedToken.sol";
 
-/// @dev Shared fixture: single admin grants ISSUER / FREEZER / RECOVERY. Alice and Bob
-/// are verified holders; attacker is not listed.
+/// @dev Shared fixture: constructors grant ISSUER / FREEZER / RECOVERY under a single
+/// DEFAULT_ADMIN EOA. Alice, Bob, and Charlie are verified holders; attacker is not listed.
 abstract contract Fixture is Test {
     IdentityRegistry internal registry;
     Compliance internal compliance;
@@ -28,17 +28,11 @@ abstract contract Fixture is Test {
     bytes32 internal constant TAG_EU_QI = keccak256("EU-QI");
 
     function setUp() public virtual {
-        vm.startPrank(admin);
-        registry = new IdentityRegistry(admin);
-        compliance = new Compliance(admin);
-        token = new PermissionedToken("Atlas Forge Permissioned USD", "afpUSD", admin, registry, compliance);
-
-        registry.grantRole(registry.ISSUER_ROLE(), issuer);
-        compliance.grantRole(compliance.ISSUER_ROLE(), issuer);
-        token.grantRole(token.ISSUER_ROLE(), issuer);
-        token.grantRole(token.FREEZER_ROLE(), freezer);
-        token.grantRole(token.RECOVERY_ROLE(), recovery);
-        vm.stopPrank();
+        registry = new IdentityRegistry(admin, issuer);
+        compliance = new Compliance(admin, issuer);
+        token = new PermissionedToken(
+            "Atlas Forge Permissioned USD", "afpUSD", admin, issuer, freezer, recovery, registry, compliance
+        );
 
         vm.startPrank(issuer);
         registry.setVerified(alice, true, DEMO_ATTESTATION);

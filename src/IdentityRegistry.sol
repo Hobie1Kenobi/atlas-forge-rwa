@@ -13,6 +13,9 @@ import { IIdentityRegistry } from "./interfaces/IIdentityRegistry.sol";
 /// `attestationHash` is a hash of whatever the issuer stored off-chain. Putting PII
 /// on-chain would be malpractice; this contract refuses that shape by only accepting
 /// `bytes32`.
+///
+/// `ISSUER_ROLE` here is independent of `PermissionedToken.ISSUER_ROLE`. Granting mint
+/// rights on the token does not list wallets; granting listing rights here does not mint.
 contract IdentityRegistry is AccessControl, IIdentityRegistry {
     bytes32 public constant ISSUER_ROLE = keccak256("ISSUER_ROLE");
 
@@ -27,11 +30,16 @@ contract IdentityRegistry is AccessControl, IIdentityRegistry {
 
     event VerifiedSet(address indexed account, bool verified, bytes32 attestationHash);
 
+    /// @param admin DEFAULT_ADMIN. Cannot be zero.
+    /// @param issuer ISSUER_ROLE holder, or address(0) to leave listing unassigned until
+    /// `grantRole` (admin must then grant — the deployer need not be admin).
     constructor(
-        address admin
+        address admin,
+        address issuer
     ) {
         if (admin == address(0)) revert ZeroAddress();
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
+        if (issuer != address(0)) _grantRole(ISSUER_ROLE, issuer);
     }
 
     /// @notice Mark `account` verified or not. ISSUER-only.

@@ -7,7 +7,8 @@ interface ICompliance {
     /// @notice Reverts if `to`'s post-transfer balance or either party's tag fails policy.
     /// @param from Sender, or address(0) on mint.
     /// @param to Recipient, or address(0) on burn.
-    /// @param toBalanceAfter `balanceOf(to) + amount` for mints and transfers; ignored on burn.
+    /// @param toBalanceAfter Balance of `to` after the movement. Equal to the current
+    /// `balanceOf(to)` on self-transfer (amount is not added). Ignored on burn.
     function validateTransfer(
         address from,
         address to,

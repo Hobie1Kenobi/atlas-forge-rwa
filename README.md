@@ -4,7 +4,7 @@
 
 Permissioned ERC-20 with transfer restrictions, freeze, recovery, and an identity registry. Written as portfolio proof for **Smart Contract Engineer** / **RWA Tokenization** roles — not a tutorial token and not a live issuance.
 
-This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no audit, no AUM, and **no deployment**. `forge test` is the deliverable.
+This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no paid audit, no ERC-3643 certificate, no AUM, and **no deployment**. Internal review notes live in [docs/findings/](docs/findings/README.md). `forge test` is the deliverable.
 
 ## Why this is not a tutorial ERC-20
 
@@ -32,9 +32,9 @@ Roles (AccessControl, single admin in v1):
   RECOVERY       forceTransfer (with ISSUER)
 ```
 
-`forceTransfer` moves balances. It does not mint or burn. It bypasses verified, freeze, max-balance, and tags so a lost-key recovery can land tokens on a replacement wallet. User transfers never get that bypass.
+`forceTransfer` moves balances. It does not mint or burn. It calls `ERC20._update` directly so it bypasses verified, freeze, max-balance, and tags — a lost-key recovery can land tokens on a replacement wallet. User transfers never get that bypass.
 
-v1 is a single `DEFAULT_ADMIN_ROLE` that grants ISSUER / FREEZER / RECOVERY. A production fork should put DEFAULT_ADMIN on a timelock (atlas-forge-vault already shows the 48h pattern). This sketch does not duplicate that timelock.
+v1 constructors grant `DEFAULT_ADMIN` plus ISSUER / FREEZER / RECOVERY. A production fork should put DEFAULT_ADMIN on a timelock (atlas-forge-vault already shows the 48h pattern). This sketch does not duplicate that timelock. Default deploy name `afpUSD` is a **label**, not a USD peg.
 
 ## Install and test
 
@@ -47,7 +47,7 @@ git submodule update --init --recursive
 forge test
 ```
 
-Optional: `forge coverage` (restriction/auth, not a vanity %) and `forge test --gas-report`.
+Optional: `forge coverage` (restriction/auth, not a vanity %) and `forge test --gas-report`. Internal findings: [docs/findings/README.md](docs/findings/README.md).
 
 ## Invariants
 
@@ -73,29 +73,33 @@ A compromised ISSUER can mint unbounded supply and force-move any balance. A com
 
 ## Tests
 
-`forge test` on this revision: **60 passed**.
+`forge test` on this revision: **76 passed**.
 
 | File | What it locks | Result |
 | --- | --- | --- |
-| `PermissionedToken.t.sol` | supply, unverified send/receive, freeze, mint auth, unauthorized freeze/force/setVerified, recovery from frozen | 35 passed |
-| `IdentityRegistry.t.sol` | ISSUER listing, hash-not-PII, unauthorized `setVerified`, zero address | 7 passed |
-| `Compliance.t.sol` | max-balance, tag allowlist (demo codes), forceTransfer bypasses cap | 10 passed |
+| `PermissionedToken.t.sol` | supply, unverified send/receive, freeze, mint auth, unauthorized freeze/force/setVerified, recovery from frozen | 36 passed |
+| `IdentityRegistry.t.sol` | ISSUER listing, hash-not-PII, unauthorized `setVerified`, constructor role grant, zero address | 8 passed |
+| `Compliance.t.sol` | max-balance (including self-transfer), tag allowlist (demo codes), forceTransfer bypasses cap/tags | 13 passed |
+| `AcceptedDesign.t.sol` | accepted residuals + deploy when caller is not admin | 11 passed |
 | `Fuzz.t.sol` | random `transfer` / `transferFrom`; forceTransfer preserves supply | 7 passed, 256 runs each |
 | `Invariant.t.sol` | stateful handler: supply = mint − burn; frozen user path reverts | 64 runs, 1600 calls, **0 reverts**, 3 invariants |
 
-Not gas-golfed. `PermissionedToken` runtime size **4,840 bytes** (solc 0.8.28, optimizer 200, Cancun). Re-run locally; do not treat medians as SLAs.
+Not gas-golfed. `PermissionedToken` runtime size **4,872 bytes** (solc 0.8.28, optimizer 200, Cancun). Re-run locally; do not treat medians as SLAs.
+
+Internal A5 notes (not a paid audit): [docs/findings/README.md](docs/findings/README.md).
 
 ## Deployments
 
-**Not deployed** on any testnet or mainnet. There are no contract addresses to cite. `script/Deploy.s.sol` broadcasts the three contracts and grants roles for local rehearsal only. Running it does not make this a security.
+**Not deployed** on any testnet or mainnet. There are no contract addresses to cite. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `afpUSD` is a label, not a USD claim.
 
 ## Honest limitations (first-class)
 
-- Not audited. Not ERC-3643. Not ERC-1400. Not a transfer agent. Not a broker-dealer stack.
+- Not a paid audit. Not ERC-3643 certified. Internal notes: [docs/findings/](docs/findings/README.md).
 - Not a KYC/AML product. `attestationHash` is a `bytes32` the issuer chose. The chain cannot tell whether anyone was identified.
 - Tag allowlist is a demo `bytes32` switch. It is not geofencing, not OFAC, not accredited-investor logic.
 - Issuer-is-god: mint, burn, freeze, and `forceTransfer` can seize or inflate. That is the design.
 - v1 DEFAULT_ADMIN is a single address, not a 48h timelock.
+- Default token name/symbol `afpUSD` is a label, not a USD peg or AUM figure.
 - No pause, no upgradeability, no snapshot/dividends, no on-chain identity claims, no privacy.
 - No bug bounty, no on-call, no mainnet invariant bot. No fake AUM.
 

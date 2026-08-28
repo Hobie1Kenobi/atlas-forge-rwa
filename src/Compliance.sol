@@ -12,7 +12,10 @@ import { ICompliance } from "./interfaces/ICompliance.sol";
 /// and not a substitute for a transfer-agent rule engine.
 ///
 /// `maxBalance == 0` means uncapped. `tagsEnforced == false` (default) means tags are
-/// stored for demo but not checked.
+/// stored for demo but not checked. When `tagsEnforced` is turned on, the default
+/// `bytes32(0)` tag is denied unless the issuer explicitly `setAllowedTag(0, true)`.
+///
+/// `ISSUER_ROLE` here is independent of `PermissionedToken.ISSUER_ROLE`.
 contract Compliance is AccessControl, ICompliance {
     bytes32 public constant ISSUER_ROLE = keccak256("ISSUER_ROLE");
 
@@ -34,11 +37,16 @@ contract Compliance is AccessControl, ICompliance {
     event TagAllowedSet(bytes32 indexed tag, bool allowed);
     event AccountTagSet(address indexed account, bytes32 indexed tag);
 
+    /// @param admin DEFAULT_ADMIN. Cannot be zero.
+    /// @param issuer ISSUER_ROLE holder, or address(0) to leave knobs unassigned until
+    /// `grantRole`.
     constructor(
-        address admin
+        address admin,
+        address issuer
     ) {
         if (admin == address(0)) revert ZeroAddress();
         _grantRole(DEFAULT_ADMIN_ROLE, admin);
+        if (issuer != address(0)) _grantRole(ISSUER_ROLE, issuer);
     }
 
     /// @notice Set the per-address balance cap. Zero disables the cap.
