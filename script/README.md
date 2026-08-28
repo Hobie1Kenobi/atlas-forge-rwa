@@ -29,9 +29,9 @@ TOKEN_NAME="Atlas Forge Permissioned Test Token"
 TOKEN_SYMBOL=AFPT
 ```
 
-`Deploy.s.sol` Solidity `envOr` fallbacks remain the older sketch labels so unit
-tests that lock those strings stay honest. The documented testnet path is AFPT
-via env.
+`Deploy.s.sol` Solidity `envOr` fallbacks are the same AFPT labels. The old
+`afpUSD` / `Atlas Forge Permissioned USD` fallback was a mistake-class risk
+(it looks like a dollar claim). Labels only, not a USD peg.
 
 If faucet limits force one keystore to hold ADMIN/ISSUER/FREEZER/RECOVERY:
 
