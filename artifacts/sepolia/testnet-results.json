@@ -1,0 +1,329 @@
+{
+  "disclaimer": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. This deployment does not represent a live security, investment product, USD-backed asset, audited protocol, KYC platform, or production issuance.",
+  "status": "COMPLETE",
+  "chainId": 11155111,
+  "network": "Ethereum Sepolia",
+  "commitSha": "0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f",
+  "rpc": "public-sepolia (label only; API keys not committed)",
+  "tokenName": "Atlas Forge Permissioned Test Token",
+  "tokenSymbol": "AFPT",
+  "ackRoleOverlap": true,
+  "note": "Hand-written sanitized evidence. Revert txs (status 0) are PASS when the revert was the expected behavior. Do not invent hashes. Foundry broadcast JSON was not copied.",
+  "releaseGate": {
+    "PUBLIC_TESTNET_BEHAVIORAL_MATRIX": "PASS",
+    "SOURCIFY": "PASS",
+    "ETHERSCAN": "FAIL",
+    "EVIDENCE_PACKAGE": "this PR",
+    "OVERALL": "TESTNET REHEARSAL INCOMPLETE until Etherscan verification succeeds OR the operator accepts Sourcify-only",
+    "BASE_SEPOLIA": "NOT EXECUTED"
+  },
+  "results": [
+    {
+      "testName": "DEPLOY_REGISTRY",
+      "operatorLabel": "DEPLOY_IDENTITY_REGISTRY",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x0b0dc5791e85870d925a324e81bb358d5279c9669065523c18cfe853ba0c130e",
+      "notes": "IdentityRegistry 0x57B7434E34702fFEA2825D6F23B651c20207E814; bytecode 1535 bytes; block 11581611; gasUsed 441695. Sourcify exact_match. Etherscan NOT verified."
+    },
+    {
+      "testName": "DEPLOY_COMPLIANCE",
+      "operatorLabel": "DEPLOY_COMPLIANCE",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xaa85254e2cb02a4a5c9b7f41063993ed0c8e2bd117f26fe76d0f17c38b5690fe",
+      "notes": "Compliance 0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12; bytecode 2285 bytes; block 11581611; gasUsed 604023. Sourcify exact_match. Etherscan NOT verified."
+    },
+    {
+      "testName": "DEPLOY_TOKEN",
+      "operatorLabel": "DEPLOY_PERMISSIONED_TOKEN",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x714b930896440a17d429c0cb6964ef58ee96f7869b2436c8f31a52b6f6edd18c",
+      "notes": "PermissionedToken 0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759; bytecode 4872 bytes; block 11581611; gasUsed 1319019. On-chain name/symbol Atlas Forge Permissioned Test Token / AFPT. registry() and compliance() match the two addresses above. Sourcify exact_match. Etherscan NOT verified."
+    },
+    {
+      "testName": "DEPLOY_ROLE_GRANTS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x714b930896440a17d429c0cb6964ef58ee96f7869b2436c8f31a52b6f6edd18c",
+      "notes": "Constructors grant DEFAULT_ADMIN / ISSUER / FREEZER / RECOVERY. No separate grant txs. Role overlap disclosed: all four roles are 0xB2636381c7a501DfB316ea786a2c689324318b01. ACK_ROLE_OVERLAP=true (faucet limitation, not production IAM)."
+    },
+    {
+      "testName": "ROLE_ADMIN",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "View check. DEFAULT_ADMIN=0xB2636381c7a501DfB316ea786a2c689324318b01. Overlaps ISSUER/FREEZER/RECOVERY. No dedicated tx; hash not invented."
+    },
+    {
+      "testName": "ROLE_ISSUER",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "View check. ISSUER=0xB2636381c7a501DfB316ea786a2c689324318b01 (same EOA as ADMIN). Hash not invented."
+    },
+    {
+      "testName": "ROLE_FREEZER",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "View check. FREEZER=0xB2636381c7a501DfB316ea786a2c689324318b01 (same EOA as ADMIN). Hash not invented."
+    },
+    {
+      "testName": "ROLE_RECOVERY",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "View check. RECOVERY=0xB2636381c7a501DfB316ea786a2c689324318b01 (same EOA as ADMIN). Hash not invented."
+    },
+    {
+      "testName": "UNAUTHORIZED_MINT_REVERT",
+      "operatorLabel": "UNAUTHORIZED_MINT_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xd549f700e2c34cf41f324e1a76b13dc18586d734867b147d2c8d4706c141eddc",
+      "notes": "On-chain tx status 0. Expected unauthorized mint revert is PASS."
+    },
+    {
+      "testName": "UNAUTHORIZED_FREEZE_REVERT",
+      "operatorLabel": "UNAUTHORIZED_FREEZE_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xbb8187f9b761db84c7c95c798fcdf10354202adfca35fd0ebf0e9db8d457259a",
+      "notes": "On-chain tx status 0. Expected unauthorized freeze revert is PASS."
+    },
+    {
+      "testName": "UNAUTHORIZED_UNFREEZE_REVERT",
+      "pass": false,
+      "status": "SKIPPED",
+      "txHash": "",
+      "notes": "No unauthorized-unfreeze revert tx was recorded on Sepolia. Hash not invented. Smoke broadcast matrix did not include this step. Not scored against PUBLIC TESTNET BEHAVIORAL MATRIX."
+    },
+    {
+      "testName": "UNAUTHORIZED_SET_VERIFIED_REVERT",
+      "operatorLabel": "UNAUTHORIZED_SET_VERIFIED_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xd43cfa1f91a23ee7984a8f934f51033c688b2faf257d1f24001fe9020f847eed",
+      "notes": "On-chain tx status 0. Expected unauthorized setVerified revert is PASS."
+    },
+    {
+      "testName": "UNAUTHORIZED_FORCE_TRANSFER_REVERT",
+      "operatorLabel": "UNAUTHORIZED_FORCE_TRANSFER_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x6aa426ec83883c29d1e7b0c9c7ae15bc8539e6a04ed9816a0a02b61216711ef3",
+      "notes": "On-chain tx status 0. Expected unauthorized forceTransfer revert is PASS."
+    },
+    {
+      "testName": "UNAUTHORIZED_BURN_REVERT",
+      "operatorLabel": "UNAUTHORIZED_BURN_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x41dbe3c99ed669a2b45ce58c653f72a2217faf71d61a0213d7124f9e7b1fea08",
+      "notes": "On-chain tx status 0. Expected unauthorized burn revert is PASS."
+    },
+    {
+      "testName": "IDENTITY_ALICE_UNVERIFIED",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "View check before VERIFY_ALICE. Non-PII hash keccak256(ATLAS_TEST_ATTESTATION_ALICE_V1) only. No dedicated tx; hash not invented."
+    },
+    {
+      "testName": "IDENTITY_BOB_UNVERIFIED",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "View check before VERIFY_BOB. Non-PII hash keccak256(ATLAS_TEST_ATTESTATION_BOB_V1) only. No dedicated tx; hash not invented."
+    },
+    {
+      "testName": "IDENTITY_SET_VERIFIED_ALICE",
+      "operatorLabel": "VERIFY_ALICE",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xee29da64bbf05a1028ab76e042c6d63f5bddc797952f7f4c74781e10182c3e7d",
+      "notes": "ALICE 0x24A70d01E3440A8B291a0eAE148ADab6640779B1 listed. Attestation is a test commitment, not KYC."
+    },
+    {
+      "testName": "IDENTITY_SET_VERIFIED_BOB",
+      "operatorLabel": "VERIFY_BOB",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x520535c82066d82d2bd0f5a15fb47372751113e0a40d464c263db31a0ade284d",
+      "notes": "BOB 0x6BA6855b0C35A556A334326B5D8Eb494830e0dE5 listed. Attestation is a test commitment, not KYC."
+    },
+    {
+      "testName": "MINT_ALICE_1000",
+      "operatorLabel": "MINT_SUCCESS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xd80ecc09b0ed193918fb0004629106adecf734990ff48dffba2a16d8abad9c80",
+      "notes": "1000e18 to ALICE."
+    },
+    {
+      "testName": "MINT_SUPPLY_DELTA",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xd80ecc09b0ed193918fb0004629106adecf734990ff48dffba2a16d8abad9c80",
+      "notes": "Same mint tx. totalSupply increased by 1000e18 only."
+    },
+    {
+      "testName": "TRANSFER_VERIFIED_ALICE_BOB_100",
+      "operatorLabel": "TRANSFER_VERIFIED_SUCCESS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x1669a934d6e8b5e01cff23bc02daabf57e7d0d260943c5e265f1687517099388",
+      "notes": "100e18 ALICE->BOB."
+    },
+    {
+      "testName": "TRANSFER_SUPPLY_CONSTANT",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x1669a934d6e8b5e01cff23bc02daabf57e7d0d260943c5e265f1687517099388",
+      "notes": "Same transfer tx. totalSupply unchanged."
+    },
+    {
+      "testName": "TRANSFER_UNVERIFIED_ALICE_CHARLIE_REVERT",
+      "operatorLabel": "TRANSFER_UNVERIFIED_FAIL ALICE->CHARLIE",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xbb7c759bf93f96d4d548866fceafc7262d8c6965794fdc6ba4925cbaa82ff730",
+      "notes": "On-chain tx status 0. NotVerified(CHARLIE) is PASS."
+    },
+    {
+      "testName": "TRANSFER_UNVERIFIED_CHARLIE_ALICE_REVERT",
+      "operatorLabel": "TRANSFER_UNVERIFIED_FAIL CHARLIE->ALICE",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x17fcd15a55fff10e277ac5116c5f202425dcd11a895569a2f7e5dd5b67b95f1f",
+      "notes": "On-chain tx status 0. NotVerified(CHARLIE) is PASS."
+    },
+    {
+      "testName": "FREEZE_ALICE",
+      "operatorLabel": "FREEZE_SUCCESS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x4f0a6384c0fc2a9b2e3aa49fcef49f457fca8bbbe3f3da9294dcd47dcadd89de",
+      "notes": "Supply unchanged. Later re-freeze before recovery: FREEZE_BEFORE_RECOVERY 0xcd489bfd3ab621544b49baccd66fd5774182cf238e018e44ce537d82ca604ffd."
+    },
+    {
+      "testName": "FROZEN_ALICE_TO_BOB_REVERT",
+      "operatorLabel": "FROZEN_SEND_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x2efe8aa311146402be477ffd558a15c523196e16df8caabce2060472b8baa968",
+      "notes": "On-chain tx status 0. AccountFrozen send path is PASS."
+    },
+    {
+      "testName": "FROZEN_BOB_TO_ALICE_REVERT",
+      "operatorLabel": "FROZEN_RECEIVE_FAIL",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x3fa250666e45875f4b89f7f567bb067d18c13dd8f08d2204e704ab7a44782398",
+      "notes": "On-chain tx status 0. AccountFrozen receive path is PASS."
+    },
+    {
+      "testName": "UNFREEZE_ALICE",
+      "operatorLabel": "UNFREEZE_SUCCESS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x2f8941ef06468ba6ccfa483e6c967f91278f1d5e5a9839c751cee0e02e6903b3",
+      "notes": "Supply unchanged."
+    },
+    {
+      "testName": "TRANSFER_AFTER_UNFREEZE",
+      "operatorLabel": "TRANSFER_AFTER_UNFREEZE",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x5815b98d00fc59c1541a106cee687af314edfb2c9859549d23e3d114cfbef271",
+      "notes": "Another 100e18 ALICE->BOB. Supply unchanged."
+    },
+    {
+      "testName": "FORCE_TRANSFER_FROZEN_ALICE_TO_REPLACEMENT",
+      "operatorLabel": "FORCE_TRANSFER_SUCCESS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x7b3a264388562fa08c82cbc4c995b126b5a5794a9c5aa478ce8a8b6b305b9ae1",
+      "notes": "ALICE 800e18 -> CHARLIE/unverified replacement (CHARLIE=UNAUTHORIZED). Admin recovery bypass (AFR-06). Preceded by FREEZE_BEFORE_RECOVERY 0xcd489bfd3ab621544b49baccd66fd5774182cf238e018e44ce537d82ca604ffd."
+    },
+    {
+      "testName": "FORCE_TRANSFER_SUPPLY_CONSTANT",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x7b3a264388562fa08c82cbc4c995b126b5a5794a9c5aa478ce8a8b6b305b9ae1",
+      "notes": "Same forceTransfer tx. Supply unchanged."
+    },
+    {
+      "testName": "COMPLIANCE_MAX_BALANCE_BELOW_CAP",
+      "operatorLabel": "MAX_BALANCE_PASS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x178d8b4b260e9e1f5ba193d5f5803cd94e13593395d616ba575af548041ff793",
+      "notes": "1e18 minted to CHARLIE under cap. Related: MAX_BALANCE_SET 0xe0e6618b163e7e61c07d7c4833f5fd363550c1735a586646efc343c0b49deaa2; CLEAR_MAX 0xabfe4aca5f534fd22502467bb6afb5f5459ca822afbf8276e5ebda82a9abd865."
+    },
+    {
+      "testName": "COMPLIANCE_MAX_BALANCE_OVER_CAP_REVERT",
+      "operatorLabel": "MAX_BALANCE_REJECT",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x0276a7880065d7488896e0c3cb1fa458114ebe5354a9f38ba4cb7c5291b1ed16",
+      "notes": "On-chain tx status 0. MaxBalanceExceeded is PASS."
+    },
+    {
+      "testName": "TAG_ALLOWLIST_TEST_POLICY",
+      "operatorLabel": "TAG_ALLOWLIST_TEST_POLICY",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0xb89ce0e8180268d4404dda06d0747902ee810ff0e08a52ad452009e8342914d7",
+      "notes": "ATLAS_TEST_POLICY_TAG_* codes only; not country, sanctions, or accreditation. Related txs: TAG_ALLOW 0xf29a2513e55c4f250b9292a80b99d0e855f4c44b5348885a95d4142f2300fbfd; SET_BOB_TAG 0x058a8fd2f612864050f23baf641ae4426acceffb8ea0c3495f90237728a1438d; TAGS_ON 0x14a75239502f6a60d51b62bea2e3056c5f08fdb0c34efdd6bdc19665811ace92; TAG_ALLOW_PASS mint bob (this txHash); TAG_DENY_FAIL 0x9b8ef4fb64a9c9242abd4e9614307ca167677a4497cd69190594d8c2647afe99 (status 0, PASS); TAGS_OFF 0x9ec8da044ee7ecc1d54db8cc8cc2655da471d2306c15b836758691a3ac2be063."
+    },
+    {
+      "testName": "ISSUER_BURN",
+      "operatorLabel": "BURN_SUCCESS",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "0x6050c1e768282cf2101e48ca12c4846f53fb86b623b3d32545e6fa893c27dec8",
+      "notes": "1e18 burned from BOB."
+    },
+    {
+      "testName": "SUPPLY_LEDGER_MATCH",
+      "pass": true,
+      "status": "PASS",
+      "txHash": "",
+      "notes": "0 + mint 1000e18 + mint 1e18 (below cap) + mint 1e18 (tagged bob) - burn 1e18 = 1001e18. Observed totalSupply 1001000000000000000000. Transfers/freeze/forceTransfer contribute 0. PASS SUPPLY_LEDGER_MATCH. No single tx; hash not invented."
+    }
+  ],
+  "operatorTxs": [
+    { "testName": "VERIFY_ALICE", "pass": true, "txStatus": 1, "txHash": "0xee29da64bbf05a1028ab76e042c6d63f5bddc797952f7f4c74781e10182c3e7d" },
+    { "testName": "VERIFY_BOB", "pass": true, "txStatus": 1, "txHash": "0x520535c82066d82d2bd0f5a15fb47372751113e0a40d464c263db31a0ade284d" },
+    { "testName": "MINT_SUCCESS", "pass": true, "txStatus": 1, "txHash": "0xd80ecc09b0ed193918fb0004629106adecf734990ff48dffba2a16d8abad9c80", "notes": "1000e18 to ALICE" },
+    { "testName": "TRANSFER_VERIFIED_SUCCESS", "pass": true, "txStatus": 1, "txHash": "0x1669a934d6e8b5e01cff23bc02daabf57e7d0d260943c5e265f1687517099388", "notes": "100e18 ALICE->BOB" },
+    { "testName": "FREEZE_SUCCESS", "pass": true, "txStatus": 1, "txHash": "0x4f0a6384c0fc2a9b2e3aa49fcef49f457fca8bbbe3f3da9294dcd47dcadd89de" },
+    { "testName": "UNFREEZE_SUCCESS", "pass": true, "txStatus": 1, "txHash": "0x2f8941ef06468ba6ccfa483e6c967f91278f1d5e5a9839c751cee0e02e6903b3" },
+    { "testName": "TRANSFER_AFTER_UNFREEZE", "pass": true, "txStatus": 1, "txHash": "0x5815b98d00fc59c1541a106cee687af314edfb2c9859549d23e3d114cfbef271", "notes": "another 100e18 ALICE->BOB" },
+    { "testName": "FREEZE_BEFORE_RECOVERY", "pass": true, "txStatus": 1, "txHash": "0xcd489bfd3ab621544b49baccd66fd5774182cf238e018e44ce537d82ca604ffd" },
+    { "testName": "FORCE_TRANSFER_SUCCESS", "pass": true, "txStatus": 1, "txHash": "0x7b3a264388562fa08c82cbc4c995b126b5a5794a9c5aa478ce8a8b6b305b9ae1", "notes": "ALICE 800e18 -> CHARLIE/unverified replacement; supply unchanged" },
+    { "testName": "MAX_BALANCE_SET", "pass": true, "txStatus": 1, "txHash": "0xe0e6618b163e7e61c07d7c4833f5fd363550c1735a586646efc343c0b49deaa2" },
+    { "testName": "MAX_BALANCE_PASS", "pass": true, "txStatus": 1, "txHash": "0x178d8b4b260e9e1f5ba193d5f5803cd94e13593395d616ba575af548041ff793", "notes": "1e18 to CHARLIE" },
+    { "testName": "CLEAR_MAX", "pass": true, "txStatus": 1, "txHash": "0xabfe4aca5f534fd22502467bb6afb5f5459ca822afbf8276e5ebda82a9abd865" },
+    { "testName": "TAG_ALLOW", "pass": true, "txStatus": 1, "txHash": "0xf29a2513e55c4f250b9292a80b99d0e855f4c44b5348885a95d4142f2300fbfd" },
+    { "testName": "SET_BOB_TAG", "pass": true, "txStatus": 1, "txHash": "0x058a8fd2f612864050f23baf641ae4426acceffb8ea0c3495f90237728a1438d" },
+    { "testName": "TAGS_ON", "pass": true, "txStatus": 1, "txHash": "0x14a75239502f6a60d51b62bea2e3056c5f08fdb0c34efdd6bdc19665811ace92" },
+    { "testName": "TAG_ALLOW_PASS", "pass": true, "txStatus": 1, "txHash": "0xb89ce0e8180268d4404dda06d0747902ee810ff0e08a52ad452009e8342914d7", "notes": "mint bob" },
+    { "testName": "TAGS_OFF", "pass": true, "txStatus": 1, "txHash": "0x9ec8da044ee7ecc1d54db8cc8cc2655da471d2306c15b836758691a3ac2be063" },
+    { "testName": "BURN_SUCCESS", "pass": true, "txStatus": 1, "txHash": "0x6050c1e768282cf2101e48ca12c4846f53fb86b623b3d32545e6fa893c27dec8", "notes": "1e18 from BOB" },
+    { "testName": "UNAUTHORIZED_MINT_FAIL", "pass": true, "txStatus": 0, "txHash": "0xd549f700e2c34cf41f324e1a76b13dc18586d734867b147d2c8d4706c141eddc", "notes": "status 0; positive evidence" },
+    { "testName": "UNAUTHORIZED_FREEZE_FAIL", "pass": true, "txStatus": 0, "txHash": "0xbb8187f9b761db84c7c95c798fcdf10354202adfca35fd0ebf0e9db8d457259a", "notes": "status 0; positive evidence" },
+    { "testName": "UNAUTHORIZED_SET_VERIFIED_FAIL", "pass": true, "txStatus": 0, "txHash": "0xd43cfa1f91a23ee7984a8f934f51033c688b2faf257d1f24001fe9020f847eed", "notes": "status 0; positive evidence" },
+    { "testName": "UNAUTHORIZED_FORCE_TRANSFER_FAIL", "pass": true, "txStatus": 0, "txHash": "0x6aa426ec83883c29d1e7b0c9c7ae15bc8539e6a04ed9816a0a02b61216711ef3", "notes": "status 0; positive evidence" },
+    { "testName": "UNAUTHORIZED_BURN_FAIL", "pass": true, "txStatus": 0, "txHash": "0x41dbe3c99ed669a2b45ce58c653f72a2217faf71d61a0213d7124f9e7b1fea08", "notes": "status 0; positive evidence" },
+    { "testName": "TRANSFER_UNVERIFIED_FAIL_ALICE_CHARLIE", "pass": true, "txStatus": 0, "txHash": "0xbb7c759bf93f96d4d548866fceafc7262d8c6965794fdc6ba4925cbaa82ff730", "notes": "status 0; positive evidence" },
+    { "testName": "TRANSFER_UNVERIFIED_FAIL_CHARLIE_ALICE", "pass": true, "txStatus": 0, "txHash": "0x17fcd15a55fff10e277ac5116c5f202425dcd11a895569a2f7e5dd5b67b95f1f", "notes": "status 0; positive evidence" },
+    { "testName": "FROZEN_SEND_FAIL", "pass": true, "txStatus": 0, "txHash": "0x2efe8aa311146402be477ffd558a15c523196e16df8caabce2060472b8baa968", "notes": "status 0; positive evidence" },
+    { "testName": "FROZEN_RECEIVE_FAIL", "pass": true, "txStatus": 0, "txHash": "0x3fa250666e45875f4b89f7f567bb067d18c13dd8f08d2204e704ab7a44782398", "notes": "status 0; positive evidence" },
+    { "testName": "MAX_BALANCE_REJECT", "pass": true, "txStatus": 0, "txHash": "0x0276a7880065d7488896e0c3cb1fa458114ebe5354a9f38ba4cb7c5291b1ed16", "notes": "status 0; positive evidence" },
+    { "testName": "TAG_DENY_FAIL", "pass": true, "txStatus": 0, "txHash": "0x9b8ef4fb64a9c9242abd4e9614307ca167677a4497cd69190594d8c2647afe99", "notes": "status 0; positive evidence" }
+  ]
+}

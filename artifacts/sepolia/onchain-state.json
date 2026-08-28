@@ -1,0 +1,68 @@
+{
+  "disclaimer": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. Not a live security, KYC platform, or production issuance.",
+  "status": "COMPLETE",
+  "chainId": 11155111,
+  "network": "Ethereum Sepolia",
+  "blockNumber": 11581660,
+  "timestampUtc": "2026-08-28T01:26:50Z",
+  "snapshotNote": "Final RPC state at block ~11581660. Deployed at ~2026-08-28T01:26:50Z (block 11581611). Block number is approximate as recorded by the operator.",
+  "commitSha": "0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f",
+  "contracts": {
+    "identityRegistry": "0x57B7434E34702fFEA2825D6F23B651c20207E814",
+    "compliance": "0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12",
+    "permissionedToken": "0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759"
+  },
+  "token": {
+    "name": "Atlas Forge Permissioned Test Token",
+    "symbol": "AFPT",
+    "decimals": 18,
+    "totalSupply": "1001000000000000000000",
+    "registryMatches": true,
+    "complianceMatches": true
+  },
+  "roles": {
+    "DEFAULT_ADMIN": "0xB2636381c7a501DfB316ea786a2c689324318b01",
+    "ISSUER": "0xB2636381c7a501DfB316ea786a2c689324318b01",
+    "FREEZER": "0xB2636381c7a501DfB316ea786a2c689324318b01",
+    "RECOVERY": "0xB2636381c7a501DfB316ea786a2c689324318b01"
+  },
+  "ackRoleOverlap": true,
+  "holders": [
+    {
+      "label": "ALICE",
+      "address": "0x24A70d01E3440A8B291a0eAE148ADab6640779B1",
+      "balance": "0",
+      "verified": true,
+      "attestationHash": "keccak256(ATLAS_TEST_ATTESTATION_ALICE_V1)",
+      "frozen": true,
+      "tag": ""
+    },
+    {
+      "label": "BOB",
+      "address": "0x6BA6855b0C35A556A334326B5D8Eb494830e0dE5",
+      "balance": "200000000000000000000",
+      "verified": true,
+      "attestationHash": "keccak256(ATLAS_TEST_ATTESTATION_BOB_V1)",
+      "frozen": false,
+      "tag": "ATLAS_TEST_POLICY_TAG_A (set during smoke; tagsEnforced false at snapshot)"
+    },
+    {
+      "label": "CHARLIE/UNAUTHORIZED",
+      "address": "0xadD8E3672B6EFBA5eEa6a317e144D5D4F8E07813",
+      "balance": "801000000000000000000",
+      "verified": false,
+      "attestationHash": "",
+      "frozen": false,
+      "tag": ""
+    }
+  ],
+  "compliance": {
+    "maxBalance": "0",
+    "tagsEnforced": false
+  },
+  "holderBalanceCheck": {
+    "alicePlusBobPlusCharlieWei": "1001000000000000000000",
+    "matchesTotalSupply": true,
+    "notes": "ALICE 0 + BOB 200e18 + CHARLIE 801e18 = 1001e18. CHARLIE remains unverified; balance arrived via forceTransfer (800e18) plus issuer mint below cap (1e18)."
+  }
+}

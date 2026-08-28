@@ -4,7 +4,7 @@
 
 Permissioned ERC-20 with transfer restrictions, freeze, recovery, and an identity registry. Written as portfolio proof for **Smart Contract Engineer** / **RWA Tokenization** roles — not a tutorial token and not a live issuance.
 
-This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no paid audit, no ERC-3643 certificate, no AUM, and **no deployment**. Internal review notes live in [docs/findings/](docs/findings/README.md). `forge test` is the deliverable.
+This repo is **production-shaped** (AccessControl roles, `_update` hook on every supply path, Foundry unit/fuzz/invariants) and **not production-certified**. There is no paid audit, no ERC-3643 certificate, and no AUM. A Sepolia engineering rehearsal exists; it is **not** a live issuance. Internal review notes live in [docs/findings/](docs/findings/README.md). `forge test` is the local deliverable.
 
 ## Why this is not a tutorial ERC-20
 
@@ -73,7 +73,7 @@ A compromised ISSUER can mint unbounded supply and force-move any balance. A com
 
 ## Tests
 
-`forge test` on this revision: **76 passed**.
+`forge test` on this revision: **78 passed**.
 
 | File | What it locks | Result |
 | --- | --- | --- |
@@ -88,9 +88,25 @@ Not gas-golfed. `PermissionedToken` runtime size **4,872 bytes** (solc 0.8.28, o
 
 Internal A5 notes (not a paid audit): [docs/findings/README.md](docs/findings/README.md).
 
+## Public testnet engineering deployment verified on Ethereum Sepolia
+
+Public testnet engineering deployment verified on Ethereum Sepolia.
+
+| Field | Value |
+| --- | --- |
+| Network | Ethereum Sepolia (chainId 11155111) |
+| Date | 2026-08-27 CT / 2026-08-28 UTC |
+| Commit | `0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f` |
+| Local tests | `forge test` 78 passed; intense profile 78 passed |
+| IdentityRegistry | [`0x57B7434E34702fFEA2825D6F23B651c20207E814`](https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814) (Sourcify `exact_match`) |
+| Compliance | [`0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12`](https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12) (Sourcify `exact_match`) |
+| PermissionedToken | [`0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759`](https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759) (Sourcify `exact_match`) |
+
+On-chain label: Atlas Forge Permissioned Test Token / AFPT. **Etherscan is not verified** (Sourcify-to-Etherscan relay hit a daily cap). This is not a USD claim, not an audit, and not ERC-3643. Full evidence: [PUBLIC_TESTNET_REPORT.md](PUBLIC_TESTNET_REPORT.md), [deployments/sepolia.json](deployments/sepolia.json).
+
 ## Deployments
 
-**Not deployed** on any testnet or mainnet. There are no contract addresses to cite. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `afpUSD` is a label, not a USD claim. Public testnet rehearsal tooling lives on this branch and is **not** a live issuance.
+Sepolia rehearsal addresses are in [deployments/sepolia.json](deployments/sepolia.json). That rehearsal is **not** a live issuance. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `afpUSD` is a label, not a USD claim.
 
 ## Honest limitations (first-class)
 

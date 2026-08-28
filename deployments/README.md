@@ -1,18 +1,13 @@
 # Sepolia deployment records
 
-**This repository has not been deployed to Sepolia (or any public chain) in this PR.**
+Hand-written sanitized record: [`sepolia.json`](sepolia.json).
+Do not paste Foundry `broadcast/` JSON here (`run-latest` can contain private
+keys). Do not invent transaction hashes.
 
-`sepolia.example.json` is a schema for a future hand-written record. Do not paste
-Foundry `broadcast/` JSON here (`run-latest` can contain private keys). Do not
-invent transaction hashes, contract addresses, or explorer URLs.
+Sepolia rehearsal ran **2026-08-28** (chain id `11155111`) from commit
+`0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f`. Token labeling is
+`Atlas Forge Permissioned Test Token` / `AFPT` (a label, not a USD claim).
+Sourcify `exact_match` for all three contracts. **Etherscan is not verified.**
+Role overlap is disclosed (`ACK_ROLE_OVERLAP=true`). This is not a live issuance.
 
-When a real rehearsal broadcast happens in a later change:
-
-1. Copy `sepolia.example.json` to a gitignored working file (or a sanitized
-   committed record with public addresses only).
-2. Fill addresses from the deploy script console logs, not from keystore files.
-3. Keep `TOKEN_NAME` = `Atlas Forge Permissioned Test Token` and `TOKEN_SYMBOL` =
-   `AFPT` on the public testnet path.
-4. Leave `broadcastTxHash` empty until a real tx exists. Never fabricate one.
-
-Chain id must be `11155111`.
+`sepolia.example.json` remains the empty schema for additional networks.
