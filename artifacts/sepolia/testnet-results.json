@@ -15,7 +15,7 @@
     "ETHERSCAN": "PASS",
     "EVIDENCE_PACKAGE": "a825081",
     "OVERALL": "TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE",
-    "BASE_SEPOLIA": "NOT EXECUTED"
+    "BASE_SEPOLIA": "TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE (see artifacts/base-sepolia/testnet-results.json; operator 0xEBd956F5c8C4b32752d87D62314F9431Dc0449e9)"
   },
   "results": [
     {
