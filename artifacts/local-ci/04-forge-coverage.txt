@@ -1,0 +1,160 @@
+=== forge coverage ===
+2026-08-28T01:14:57Z
+Warning: optimizer settings and `viaIR` have been disabled for accurate coverage reports.
+If you encounter "stack too deep" errors, consider using `--ir-minimum` which enables `viaIR` with minimum optimization resolving most of the errors.
+See more: https://book.getfoundry.sh/guides/best-practices/stack-too-deep
+Compiling 44 files with Solc 0.8.28
+Solc 0.8.28 finished in 1.04s
+Compiler run successful!
+Analysing contracts...
+Running tests...
+
+Ran 2 tests for test/AcceptedDesign.t.sol:DeployScriptTest
+[PASS] test_deploy_default_labels_match_env_example() (gas: 9376379)
+[PASS] test_deploy_grants_roles_when_caller_is_not_admin() (gas: 9511683)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.34ms (1.87ms CPU time)
+
+Ran 9 tests for test/AcceptedDesign.t.sol:AcceptedDesignTest
+[PASS] test_accepted_default_admin_is_single_address_not_timelock() (gas: 74918)
+[PASS] test_accepted_deploy_name_afpUSD_is_label_not_usd_claim() (gas: 34296)
+[PASS] test_accepted_force_transfer_bypasses_freeze_registry_cap_and_tags() (gas: 407200)
+[PASS] test_accepted_force_transfer_does_not_spend_allowance() (gas: 111886)
+[PASS] test_accepted_issuer_is_god_mint_burn_freeze_force() (gas: 281328)
+[PASS] test_accepted_mint_to_unverified() (gas: 99323)
+[PASS] test_accepted_tags_enforced_denies_default_zero_tag() (gas: 122405)
+[PASS] test_accepted_token_issuer_is_not_automatically_registry_issuer() (gas: 203715)
+[PASS] test_accepted_unverified_spender_may_transferFrom_between_verified() (gas: 146777)
+Suite result: ok. 9 passed; 0 failed; 0 skipped; finished in 5.84ms (4.33ms CPU time)
+
+Ran 8 tests for test/IdentityRegistry.t.sol:IdentityRegistryTest
+[PASS] test_admin_cannot_set_verified_without_issuer_role() (gas: 46998)
+[PASS] test_cannot_verify_zero_address() (gas: 36483)
+[PASS] test_constructor_grants_issuer_without_deployer_admin() (gas: 46779)
+[PASS] test_constructor_rejects_zero_admin() (gas: 6670)
+[PASS] test_issuer_can_delist_without_clearing_hash() (gas: 58599)
+[PASS] test_issuer_sets_verified_with_attestation_hash() (gas: 102891)
+[PASS] test_unauthorized_set_verified_reverts() (gas: 45063)
+[PASS] test_unlisted_address_is_not_verified() (gas: 27159)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 8.41ms (6.94ms CPU time)
+
+Ran 13 tests for test/Compliance.t.sol:ComplianceTest
+[PASS] test_constructor_rejects_zero_admin() (gas: 6674)
+[PASS] test_force_transfer_bypasses_max_balance() (gas: 118126)
+[PASS] test_force_transfer_bypasses_tags() (gas: 247602)
+[PASS] test_max_balance_blocks_issuer_mint() (gas: 105033)
+[PASS] test_max_balance_blocks_receive() (gas: 192978)
+[PASS] test_self_transfer_at_max_balance_does_not_revert() (gas: 131650)
+[PASS] test_self_transfer_from_still_at_max_balance() (gas: 165988)
+[PASS] test_tag_allowlist_blocks_disallowed_class_code() (gas: 271550)
+[PASS] test_tag_allowlist_blocks_untagged() (gas: 347678)
+[PASS] test_tags_not_checked_until_enforced() (gas: 135830)
+[PASS] test_unauthorized_set_max_balance_reverts() (gas: 43838)
+[PASS] test_unauthorized_set_tag_reverts() (gas: 46950)
+[PASS] test_uncapped_when_max_balance_zero() (gas: 68754)
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 13.10ms (10.17ms CPU time)
+
+Ran 36 tests for test/PermissionedToken.t.sol:PermissionedTokenTest
+[PASS] test_cannot_burn_from_frozen() (gas: 92927)
+[PASS] test_cannot_mint_to_frozen() (gas: 92992)
+[PASS] test_constructor_grants_operational_roles() (gas: 84759)
+[PASS] test_constructor_rejects_zero_addresses() (gas: 17288)
+[PASS] test_delisted_holder_cannot_send_or_receive() (gas: 122233)
+[PASS] test_force_transfer_cannot_mint_or_burn() (gas: 68182)
+[PASS] test_force_transfer_from_unverified_succeeds() (gas: 122473)
+[PASS] test_force_transfer_insufficient_balance_reverts() (gas: 45016)
+[PASS] test_force_transfer_moves_without_changing_supply() (gas: 117527)
+[PASS] test_force_transfer_recovers_from_frozen() (gas: 161086)
+[PASS] test_force_transfer_to_unverified_succeeds() (gas: 93005)
+[PASS] test_force_transfer_zero_amount_reverts() (gas: 41144)
+[PASS] test_freeze_does_not_change_supply_or_balances() (gas: 111792)
+[PASS] test_freeze_zero_address_reverts() (gas: 35368)
+[PASS] test_frozen_cannot_receive() (gas: 92894)
+[PASS] test_frozen_cannot_send() (gas: 90688)
+[PASS] test_frozen_cannot_send_or_receive_transferFrom() (gas: 257889)
+[PASS] test_issuer_burn_from_unverified_succeeds() (gas: 127328)
+[PASS] test_issuer_force_transfer_moves_without_changing_supply() (gas: 85282)
+[PASS] test_issuer_mint_to_unverified_succeeds() (gas: 99423)
+[PASS] test_mint_and_burn_reject_zero_amount() (gas: 65175)
+[PASS] test_only_issuer_burns() (gas: 46809)
+[PASS] test_only_issuer_mint_and_burn_change_supply() (gas: 149490)
+[PASS] test_only_issuer_mints() (gas: 129076)
+[PASS] test_unauthorized_force_transfer_reverts() (gas: 110505)
+[PASS] test_unauthorized_freeze_reverts() (gas: 87702)
+[PASS] test_unauthorized_set_verified_reverts() (gas: 45041)
+[PASS] test_unauthorized_unfreeze_reverts() (gas: 102089)
+[PASS] test_unfreeze_does_not_change_supply() (gas: 110562)
+[PASS] test_unfreeze_restores_user_transfers() (gas: 152854)
+[PASS] test_unverified_cannot_receive_transfer() (gas: 51440)
+[PASS] test_unverified_cannot_receive_transferFrom() (gas: 108987)
+[PASS] test_unverified_cannot_send_transfer() (gas: 124516)
+[PASS] test_unverified_cannot_send_transferFrom() (gas: 166483)
+[PASS] test_verified_holders_can_transfer() (gas: 92467)
+[PASS] test_verified_holders_can_transferFrom() (gas: 126849)
+Suite result: ok. 36 passed; 0 failed; 0 skipped; finished in 33.27ms (27.75ms CPU time)
+
+Ran 2 tests for test/TestnetSmoke.t.sol:TestnetSmokeTest
+[PASS] test_deploy_public_testnet_labels_are_afpt() (gas: 9425263)
+[PASS] test_smoke_refuses_non_sepolia_chain() (gas: 8234004)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.04ms (1.38ms CPU time)
+
+Ran 7 tests for test/Fuzz.t.sol:FuzzTest
+[PASS] testFuzz_forceTransferPreservesSupply(uint256) (runs: 256, μ: 118311, ~: 118147)
+[PASS] testFuzz_freezeThenUserTransferReverts(uint256) (runs: 256, μ: 112684, ~: 112068)
+[PASS] testFuzz_maxBalanceHonoredOnTransfer(uint256,uint256) (runs: 256, μ: 182639, ~: 185612)
+[PASS] testFuzz_mintOnlyChangesSupplyByAmount(uint256) (runs: 256, μ: 97425, ~: 96871)
+[PASS] testFuzz_randomTransferAttempts(address,address,uint256) (runs: 256, μ: 64247, ~: 63767)
+[PASS] testFuzz_randomTransferFromAttempts(address,address,address,uint256) (runs: 256, μ: 57024, ~: 57622)
+[PASS] testFuzz_unverifiedRecipientAlwaysReverts(uint256) (runs: 256, μ: 66266, ~: 65650)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 74.88ms (147.12ms CPU time)
+
+Ran 1 test for test/Invariant.t.sol:InvariantTest
+[PASS]
+InvariantTest invariants:
+[PASS] invariant_actorBalancesBoundBySupply
+[PASS] invariant_frozenUserTransferReverts
+[PASS] invariant_supplyMatchesMintBurn
+ InvariantTest invariants (runs: 64, calls: 1600, reverts: 0)
+
+╭--------------------+-----------------+-------+---------+----------╮
+| Contract           | Selector        | Calls | Reverts | Discards |
++===================================================================+
+| RestrictionHandler | burn            | 183   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | forceTransfer   | 193   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | freezeAccount   | 203   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | mint            | 215   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | setVerified     | 183   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | transfer        | 209   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | transferFrom    | 228   | 0       | 0        |
+|--------------------+-----------------+-------+---------+----------|
+| RestrictionHandler | unfreezeAccount | 186   | 0       | 0        |
+╰--------------------+-----------------+-------+---------+----------╯
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 414.23ms (407.99ms CPU time)
+
+Ran 8 test suites in 424.44ms (554.10ms CPU time): 78 tests passed, 0 failed, 0 skipped (78 total tests)
+
+╭---------------------------+------------------+------------------+-----------------+-----------------╮
+| File                      | % Lines          | % Statements     | % Branches      | % Funcs         |
++=====================================================================================================+
+| script/Deploy.s.sol       | 28.57% (8/28)    | 25.71% (9/35)    | N/A (0/0)       | 50.00% (1/2)    |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| script/TestnetSmoke.s.sol | 1.47% (5/341)    | 0.95% (4/419)    | 1.56% (1/64)    | 5.71% (2/35)    |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| src/Compliance.sol        | 100.00% (30/30)  | 96.55% (28/29)   | 87.50% (7/8)    | 100.00% (7/7)   |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| src/IdentityRegistry.sol  | 100.00% (12/12)  | 100.00% (11/11)  | 100.00% (3/3)   | 100.00% (4/4)   |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| src/PermissionedToken.sol | 100.00% (45/45)  | 98.48% (65/66)   | 94.12% (16/17)  | 100.00% (8/8)   |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| test/Invariant.t.sol      | 97.83% (90/92)   | 95.83% (115/120) | 88.24% (15/17)  | 100.00% (10/10) |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| test/helpers/Fixture.sol  | 71.43% (10/14)   | 66.67% (8/12)    | N/A (0/0)       | 100.00% (2/2)   |
+|---------------------------+------------------+------------------+-----------------+-----------------|
+| Total                     | 35.59% (200/562) | 34.68% (240/692) | 38.53% (42/109) | 50.00% (34/68)  |
+╰---------------------------+------------------+------------------+-----------------+-----------------╯

@@ -2,9 +2,16 @@ repo: https://github.com/Hobie1Kenobi/atlas-forge-rwa
 branch: testnet-production-rehearsal
 start_head: 0aabbf60c867959ba464343273d9cb761d00f33a
 utc_preflight: 2026-08-28T01:09:22Z
+utc_local_ci_complete: 2026-08-28T01:15:26Z
 os: Linux cursor 6.12.94+ #1 SMP PREEMPT_DYNAMIC Thu Aug 27 17:56:59 UTC 2026 x86_64
 forge: forge Version: 1.8.0 / Commit SHA: 61ae26af36320d4fa1020f7db53785885e29eeb5 / Build Timestamp: 2026-08-26T13:14:38.112964122Z
 cast: cast Version: 1.8.0 / Commit SHA: 61ae26af36320d4fa1020f7db53785885e29eeb5 / Build Timestamp: 2026-08-26T13:14:38.112964122Z
 solc: 0.8.28
 evm_version: cancun
 broadcast_in_this_pr: no
+forge_test_default: 78 passed, 0 failed, 0 skipped (78 total tests)
+forge_test_intense: 78 passed, 0 failed, 0 skipped (78 total tests)
+intense_fuzz_runs: 5000
+intense_invariant: runs 256, calls 12800, reverts 0
+fail_on_revert: false (unchanged; accepted residual)
+src_changed: no

@@ -135,5 +135,13 @@ evidence templates only.
 
 ## Local CI
 
-See `artifacts/local-ci/` and `PUBLIC_TESTNET_REPORT.md`. Counts are taken from
-the terminal, not from README hypothesis (~76 on a prior revision).
+Terminal counts (not the README's historical ~76):
+
+- `forge test -vvv`: **78 passed, 0 failed, 0 skipped**
+- `FOUNDRY_PROFILE=intense forge test -vvv`: **78 passed, 0 failed, 0 skipped**
+  (fuzz 5000; invariant 256 runs / 12800 calls / 0 reverts)
+- `[profile.intense.invariant] fail_on_revert = false` **unchanged** (accepted residual)
+- PermissionedToken runtime size still **4,872 bytes**; `src/` not modified
+
+Raw logs: `artifacts/local-ci/`. Coverage summary: `src/` contracts are 100% lines;
+total % is pulled down by the unexecuted Sepolia smoke script.

@@ -20,7 +20,7 @@ Token labeling for the public rehearsal: **Atlas Forge Permissioned Test Token**
 | Branch | testnet-production-rehearsal |
 | Base HEAD (start) | `0aabbf60c867959ba464343273d9cb761d00f33a` |
 | Report commit | see `git rev-parse HEAD` on this branch after evidence commit |
-| UTC timestamp | 2026-08-28T01:09:22Z (preflight start; local-CI timestamp in `artifacts/local-ci/environment.txt`) |
+| UTC timestamp | preflight 2026-08-28T01:09:22Z; local CI complete 2026-08-28T01:15:26Z |
 | OS | Linux cursor 6.12.94+ x86_64 |
 | `forge --version` | forge 1.8.0 (61ae26af36 2026-08-26T13:14:38.112964122Z) |
 | `cast --version` | cast 1.8.0 (61ae26af36 2026-08-26T13:14:38.112964122Z) |
@@ -37,12 +37,14 @@ Do not treat README's historical "~76 tests" as this revision's count.
 
 | Command | Result |
 | --- | --- |
-| `forge clean` | see `artifacts/local-ci/01-forge-clean.txt` |
-| `forge build --sizes` | see `artifacts/local-ci/02-forge-build-sizes.txt` |
-| `forge test -vvv` | **PENDING_LOCAL_CI** |
-| `forge coverage` | **PENDING_LOCAL_CI** |
-| `forge test --gas-report` | **PENDING_LOCAL_CI** |
-| `FOUNDRY_PROFILE=intense forge test -vvv` | **PENDING_LOCAL_CI** |
+| `forge clean` | exit 0 (`artifacts/local-ci/01-forge-clean.txt`) |
+| `forge build --sizes` | Compiler run successful. PermissionedToken runtime **4,872 bytes** (Compliance 2,285; IdentityRegistry 1,535) |
+| `forge test -vvv` | **78 passed, 0 failed, 0 skipped** (8 suites). Fuzz 256 runs. Invariant 64 runs / 1600 calls / **0 reverts** |
+| `forge coverage` | **78 passed, 0 failed, 0 skipped**. `src/` line coverage: Compliance 100% (30/30), IdentityRegistry 100% (12/12), PermissionedToken 100% (45/45). Total 35.59% because `TestnetSmoke.s.sol` is not executed on-chain in this PR |
+| `forge test --gas-report` | **78 passed, 0 failed, 0 skipped** |
+| `FOUNDRY_PROFILE=intense forge test -vvv` | **78 passed, 0 failed, 0 skipped**. Fuzz **5000** runs. Invariant **256** runs / **12800** calls / **0 reverts** |
+
+Main README claimed 76 tests on a prior revision. This branch is **78** after two rehearsal-tooling tests. Counts are from the terminal, not from that hypothesis.
 
 `[profile.intense.invariant] fail_on_revert = false` is **left unchanged**
 (accepted residual: handlers catch expected reverts; the profile does not fail
