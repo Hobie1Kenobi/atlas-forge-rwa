@@ -12,9 +12,9 @@
   "releaseGate": {
     "PUBLIC_TESTNET_BEHAVIORAL_MATRIX": "PASS",
     "SOURCIFY": "PASS",
-    "ETHERSCAN": "FAIL",
-    "EVIDENCE_PACKAGE": "this PR",
-    "OVERALL": "TESTNET REHEARSAL INCOMPLETE until Etherscan verification succeeds OR the operator accepts Sourcify-only",
+    "ETHERSCAN": "PASS",
+    "EVIDENCE_PACKAGE": "a825081",
+    "OVERALL": "TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE",
     "BASE_SEPOLIA": "NOT EXECUTED"
   },
   "results": [
@@ -24,7 +24,7 @@
       "pass": true,
       "status": "PASS",
       "txHash": "0x0b0dc5791e85870d925a324e81bb358d5279c9669065523c18cfe853ba0c130e",
-      "notes": "IdentityRegistry 0x57B7434E34702fFEA2825D6F23B651c20207E814; bytecode 1535 bytes; block 11581611; gasUsed 441695. Sourcify exact_match. Etherscan NOT verified."
+      "notes": "IdentityRegistry 0x57B7434E34702fFEA2825D6F23B651c20207E814; bytecode 1535 bytes; block 11581611; gasUsed 441695. Etherscan Exact Match confirmed 2026-08-28. Sourcify exact_match (additional)."
     },
     {
       "testName": "DEPLOY_COMPLIANCE",
@@ -32,7 +32,7 @@
       "pass": true,
       "status": "PASS",
       "txHash": "0xaa85254e2cb02a4a5c9b7f41063993ed0c8e2bd117f26fe76d0f17c38b5690fe",
-      "notes": "Compliance 0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12; bytecode 2285 bytes; block 11581611; gasUsed 604023. Sourcify exact_match. Etherscan NOT verified."
+      "notes": "Compliance 0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12; bytecode 2285 bytes; block 11581611; gasUsed 604023. Etherscan Exact Match confirmed 2026-08-28. Sourcify exact_match (additional)."
     },
     {
       "testName": "DEPLOY_TOKEN",
@@ -40,7 +40,7 @@
       "pass": true,
       "status": "PASS",
       "txHash": "0x714b930896440a17d429c0cb6964ef58ee96f7869b2436c8f31a52b6f6edd18c",
-      "notes": "PermissionedToken 0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759; bytecode 4872 bytes; block 11581611; gasUsed 1319019. On-chain name/symbol Atlas Forge Permissioned Test Token / AFPT. registry() and compliance() match the two addresses above. Sourcify exact_match. Etherscan NOT verified."
+      "notes": "PermissionedToken 0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759; bytecode 4872 bytes; block 11581611; gasUsed 1319019. On-chain name/symbol Atlas Forge Permissioned Test Token / AFPT. registry() and compliance() match the two addresses above. Etherscan Exact Match confirmed 2026-08-28. Sourcify exact_match (additional)."
     },
     {
       "testName": "DEPLOY_ROLE_GRANTS",

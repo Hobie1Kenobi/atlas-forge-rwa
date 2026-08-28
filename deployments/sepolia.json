@@ -3,7 +3,8 @@
   "network": "sepolia",
   "chainId": 11155111,
   "status": "DEPLOYED_REHEARSAL",
-  "note": "Hand-written sanitized record from on-chain receipts. Do not trust Foundry broadcast JSON contractName (misaligned). Never copy run-latest JSON (may contain keys). Not a live issuance.",
+  "overallStatus": "TESTNET REHEARSAL COMPLETE — NOT AN ISSUANCE",
+  "note": "Hand-written sanitized record from on-chain receipts. Do not trust Foundry broadcast JSON contractName (misaligned). Never copy run-latest JSON (may contain keys). Not a live issuance. Etherscan Exact Match confirmed 2026-08-28; Sourcify exact_match remains additional proof.",
   "commitSha": "0807cdab8acb6769eaf67c39cc6b7ad5b2e9770f",
   "deployedAtUtc": "2026-08-28T01:26:50Z",
   "deployBlock": 11581611,
@@ -25,8 +26,8 @@
         "match": "exact_match",
         "url": "https://repo.sourcify.dev/11155111/0x57B7434E34702fFEA2825D6F23B651c20207E814"
       },
-      "etherscanVerified": false,
-      "etherscanNote": "NOT verified. Sourcify-to-Etherscan relay hit daily 500 submission cap."
+      "etherscanVerified": true,
+      "etherscanNote": "Exact Match confirmed 2026-08-28 via forge verify-contract (solc 0.8.28, optimizer 200, cancun). https://sepolia.etherscan.io/address/0x57B7434E34702fFEA2825D6F23B651c20207E814#code"
     },
     "compliance": {
       "address": "0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12",
@@ -38,8 +39,8 @@
         "match": "exact_match",
         "url": "https://repo.sourcify.dev/11155111/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12"
       },
-      "etherscanVerified": false,
-      "etherscanNote": "NOT verified. Sourcify-to-Etherscan relay hit daily 500 submission cap."
+      "etherscanVerified": true,
+      "etherscanNote": "Exact Match confirmed 2026-08-28 via forge verify-contract (solc 0.8.28, optimizer 200, cancun). https://sepolia.etherscan.io/address/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12#code"
     },
     "permissionedToken": {
       "address": "0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759",
@@ -51,8 +52,8 @@
         "match": "exact_match",
         "url": "https://repo.sourcify.dev/11155111/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759"
       },
-      "etherscanVerified": false,
-      "etherscanNote": "NOT verified. Sourcify-to-Etherscan relay hit daily 500 submission cap.",
+      "etherscanVerified": true,
+      "etherscanNote": "Exact Match confirmed 2026-08-28 via forge verify-contract (solc 0.8.28, optimizer 200, cancun). https://sepolia.etherscan.io/address/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759#code",
       "onChainName": "Atlas Forge Permissioned Test Token",
       "onChainSymbol": "AFPT",
       "registry": "0x57B7434E34702fFEA2825D6F23B651c20207E814",
@@ -75,8 +76,8 @@
   "roleOverlapNote": "ADMIN=ISSUER=FREEZER=RECOVERY due to faucet limitation. Not production IAM. CHARLIE=UNAUTHORIZED (same address).",
   "broadcastTxHash": "0x714b930896440a17d429c0cb6964ef58ee96f7869b2436c8f31a52b6f6edd18c",
   "etherscan": {
-    "identityRegistry": "NOT verified (Sourcify-to-Etherscan relay hit daily 500 submission cap)",
-    "compliance": "NOT verified (Sourcify-to-Etherscan relay hit daily 500 submission cap)",
-    "permissionedToken": "NOT verified (Sourcify-to-Etherscan relay hit daily 500 submission cap)"
+    "identityRegistry": "https://sepolia.etherscan.io/address/0x57B7434E34702fFEA2825D6F23B651c20207E814#code",
+    "compliance": "https://sepolia.etherscan.io/address/0xB050a43e5Dd7dF0Ad626cAF9f179549bF4deFD12#code",
+    "permissionedToken": "https://sepolia.etherscan.io/address/0x1FF6c5A4890C9F3ef499732fC82Fc270E1EA6759#code"
   }
 }
