@@ -1,0 +1,8 @@
+{
+  "disclaimer": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. Not a live issuance, reserve, AUM, or NAV report.",
+  "status": "NOT_EXECUTED",
+  "chainId": 11155111,
+  "token": "",
+  "commitSha": "NOT EXECUTED — no public-chain broadcast in this PR",
+  "entries": []
+}

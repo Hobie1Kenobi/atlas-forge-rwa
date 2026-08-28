@@ -90,7 +90,7 @@ Internal A5 notes (not a paid audit): [docs/findings/README.md](docs/findings/RE
 
 ## Deployments
 
-**Not deployed** on any testnet or mainnet. There are no contract addresses to cite. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `afpUSD` is a label, not a USD claim.
+**Not deployed** on any testnet or mainnet. There are no contract addresses to cite. `script/Deploy.s.sol` broadcasts the three contracts; constructors grant roles. Running it does not make this a security. Default `afpUSD` is a label, not a USD claim. Public testnet rehearsal tooling lives on this branch and is **not** a live issuance.
 
 ## Honest limitations (first-class)
 

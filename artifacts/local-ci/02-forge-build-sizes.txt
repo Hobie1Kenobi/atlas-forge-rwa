@@ -1,0 +1,1356 @@
+Compiling 44 files with Solc 0.8.28
+Solc 0.8.28 finished in 2.69s
+Compiler run successful!
+
+╭-------------------+------------------+-------------------+--------------------+---------------------╮
+| Contract          | Runtime Size (B) | Initcode Size (B) | Runtime Margin (B) | Initcode Margin (B) |
++=====================================================================================================+
+| Compliance        | 2,285            | 2,705             | 22,291             | 46,447              |
+|-------------------+------------------+-------------------+--------------------+---------------------|
+| IdentityRegistry  | 1,535            | 1,955             | 23,041             | 47,197              |
+|-------------------+------------------+-------------------+--------------------+---------------------|
+| PermissionedToken | 4,872            | 6,195             | 19,704             | 42,957              |
+╰-------------------+------------------+-------------------+--------------------+---------------------╯
+
+note[multi-contract-file]: prefer having only one contract, interface or library per file
+   ╭▸ test/AcceptedDesign.t.sol:14:10
+   │
+14 │ contract AcceptedDesignTest is Fixture {
+   │          ━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/multi-contract-file
+
+note[multi-contract-file]: prefer having only one contract, interface or library per file
+    ╭▸ test/AcceptedDesign.t.sol:129:10
+    │
+129 │ contract DeployScriptTest is Test {
+    │          ━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/multi-contract-file
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:19:30
+   │
+19 │         token.mint(attacker, 5 ether);
+   │                              ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:23:46
+   │
+23 │         token.forceTransfer(alice, attacker, 20 ether);
+   │                                              ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:27:30
+   │
+27 │         token.burn(attacker, 5 ether);
+   │                              ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:30:45
+   │
+30 │         assertEq(token.balanceOf(attacker), 20 ether);
+   │                                             ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:36:30
+   │
+36 │         token.mint(attacker, 1 ether);
+   │                              ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:37:45
+   │
+37 │         assertEq(token.balanceOf(attacker), 1 ether);
+   │                                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:54:46
+   │
+54 │         token.forceTransfer(alice, attacker, 100 ether);
+   │                                              ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:57:45
+   │
+57 │         assertEq(token.balanceOf(attacker), 100 ether);
+   │                                             ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:65:28
+   │
+65 │         token.approve(bob, 40 ether);
+   │                            ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:68:47
+   │
+68 │         assertEq(token.allowance(alice, bob), 40 ether);
+   │                                               ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:87:33
+   │
+87 │         token.approve(attacker, 15 ether);
+   │                                 ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/AcceptedDesign.t.sol:91:40
+   │
+91 │         token.transferFrom(alice, bob, 15 ether);
+   │                                        ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/AcceptedDesign.t.sol:107:27
+    │
+107 │         token.mint(alice, 1 ether);
+    │                           ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/AcceptedDesign.t.sol:124:29
+    │
+124 │         token.transfer(bob, 1 ether);
+    │                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+warning[unused-return]: Return value of an external call is not used
+   ╭▸ test/TestnetSmoke.t.sol:22:13
+   │
+22 │             script.deploy(admin, admin, admin, admin, "Atlas Forge Permissioned Test Token", "AFPT");
+   │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+   ╭▸ test/Fuzz.t.sol:45:13
+   │
+45 │         try token.transferFrom(from, to, amount) {
+   │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+note[screaming-snake-case-immutable]: immutables should use SCREAMING_SNAKE_CASE
+   ╭▸ src/PermissionedToken.sol:41:40
+   │
+41 │     IIdentityRegistry public immutable registry;
+   │                                        ━━━━━━━━ help: consider using: `REGISTRY`
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/screaming-snake-case-immutable
+
+warning[unused-return]: Return value of an external call is not used
+   ╭▸ test/AcceptedDesign.t.sol:65:9
+   │
+65 │         token.approve(bob, 40 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+note[screaming-snake-case-immutable]: immutables should use SCREAMING_SNAKE_CASE
+   ╭▸ src/PermissionedToken.sol:42:34
+   │
+42 │     ICompliance public immutable compliance;
+   │                                  ━━━━━━━━━━ help: consider using: `COMPLIANCE`
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/screaming-snake-case-immutable
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Fuzz.t.sol:78:9
+   │
+78 │         token.transfer(bob, amount);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[boolean-cst]: misuse of a boolean constant
+    ╭▸ script/TestnetSmoke.s.sol:310:66
+    │
+310 │             abi.encodeCall(cfg.registry.setVerified, (cfg.alice, true, ATTESTATION_ALICE)),
+    │                                                                  ━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/boolean-cst
+
+warning[boolean-cst]: misuse of a boolean constant
+    ╭▸ script/TestnetSmoke.s.sol:351:66
+    │
+351 │             abi.encodeCall(cfg.registry.setVerified, (cfg.alice, true, ATTESTATION_ALICE)),
+    │                                                                  ━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/boolean-cst
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Fuzz.t.sol:88:9
+   │
+88 │         token.transfer(attacker, amount);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+note[low-level-calls]: Low-level calls should be avoided
+    ╭▸ script/TestnetSmoke.s.sol:659:44
+    │
+659 │         (bool success, bytes memory ret) = to.call(data);
+    │                                            ━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/low-level-calls
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/Fuzz.t.sol:115:13
+    │
+115 │             token.transfer(bob, amount);
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/Fuzz.t.sol:119:13
+    │
+119 │             token.transfer(bob, amount);
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:46:41
+   │
+46 │         token.forceTransfer(alice, bob, 100 ether);
+   │                                         ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:49:56
+   │
+49 │         assertEq(token.balanceOf(alice), aliceBefore - 100 ether);
+   │                                                        ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:50:52
+   │
+50 │         assertEq(token.balanceOf(bob), bobBefore + 100 ether);
+   │                                                    ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:56:41
+   │
+56 │         token.forceTransfer(alice, bob, 10 ether);
+   │                                         ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:64:29
+   │
+64 │         token.mint(charlie, 7 ether);
+   │                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:65:48
+   │
+65 │         assertEq(token.totalSupply(), supply + 7 ether);
+   │                                                ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:89:34
+   │
+89 │         token.transfer(attacker, 1 ether);
+   │                                  ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:94:46
+   │
+94 │         token.forceTransfer(alice, attacker, 5 ether);
+   │                                              ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:95:45
+   │
+95 │         assertEq(token.balanceOf(attacker), 5 ether);
+   │                                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/PermissionedToken.t.sol:99:29
+   │
+99 │         token.transfer(bob, 1 ether);
+   │                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:104:28
+    │
+104 │         token.approve(bob, 10 ether);
+    │                            ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:108:45
+    │
+108 │         token.transferFrom(alice, attacker, 1 ether);
+    │                                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:113:46
+    │
+113 │         token.forceTransfer(alice, attacker, 5 ether);
+    │                                              ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:115:28
+    │
+115 │         token.approve(bob, 5 ether);
+    │                            ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:119:45
+    │
+119 │         token.transferFrom(attacker, alice, 1 ether);
+    │                                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:124:30
+    │
+124 │         token.mint(attacker, 42 ether);
+    │                              ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:125:45
+    │
+125 │         assertEq(token.balanceOf(attacker), 42 ether);
+    │                                             ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+   ╭▸ test/AcceptedDesign.t.sol:91:9
+   │
+91 │         token.transferFrom(alice, bob, 15 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:131:30
+    │
+131 │         token.mint(attacker, 42 ether);
+    │                              ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:133:30
+    │
+133 │         token.burn(attacker, 10 ether);
+    │                              ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:139:46
+    │
+139 │         token.forceTransfer(alice, attacker, 8 ether);
+    │                                              ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:140:45
+    │
+140 │         assertEq(token.balanceOf(attacker), 8 ether);
+    │                                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:146:30
+    │
+146 │         token.mint(attacker, 8 ether);
+    │                              ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:148:46
+    │
+148 │         token.forceTransfer(attacker, alice, 8 ether);
+    │                                              ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:174:32
+    │
+174 │         token.approve(charlie, 40 ether);
+    │                                ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:176:40
+    │
+176 │         token.transferFrom(alice, bob, 40 ether);
+    │                                        ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:190:29
+    │
+190 │         token.transfer(bob, 1 ether);
+    │                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:199:29
+    │
+199 │         token.transfer(bob, 1 ether);
+    │                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:204:32
+    │
+204 │         token.approve(charlie, 10 ether);
+    │                                ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:210:40
+    │
+210 │         token.transferFrom(alice, bob, 1 ether);
+    │                                        ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:218:40
+    │
+218 │         token.transferFrom(alice, bob, 1 ether);
+    │                                        ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+warning[unused-return]: Return value of an external call is not used
+   ╭▸ test/AcceptedDesign.t.sol:87:9
+   │
+87 │         token.approve(attacker, 15 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:226:29
+    │
+226 │         token.mint(charlie, 1 ether);
+    │                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:234:27
+    │
+234 │         token.burn(alice, 1 ether);
+    │                           ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:243:41
+    │
+243 │         token.forceTransfer(alice, bob, 100 ether);
+    │                                         ━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:258:29
+    │
+258 │         token.transfer(bob, 1 ether);
+    │                             ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:273:30
+    │
+273 │         token.mint(attacker, 1 ether);
+    │                              ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:279:27
+    │
+279 │         token.mint(alice, 1 ether);
+    │                           ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:287:27
+    │
+287 │         token.mint(alice, 1 ether);
+    │                           ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:297:27
+    │
+297 │         token.burn(alice, 1 ether);
+    │                           ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:347:41
+    │
+347 │         token.forceTransfer(alice, bob, 1 ether);
+    │                                         ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:351:41
+    │
+351 │         token.forceTransfer(alice, bob, 1 ether);
+    │                                         ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:355:41
+    │
+355 │         token.forceTransfer(alice, bob, 1 ether);
+    │                                         ━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:376:103
+    │
+376 │             abi.encodeWithSelector(IERC20Errors.ERC20InsufficientBalance.selector, alice, 1000 ether, 1001 ether)
+    │                                                                                                       ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/PermissionedToken.t.sol:379:41
+    │
+379 │         token.forceTransfer(alice, bob, 1001 ether);
+    │                                         ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/AcceptedDesign.t.sol:91:9
+   │
+91 │         token.transferFrom(alice, bob, 15 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/AcceptedDesign.t.sol:124:9
+    │
+124 │         token.transfer(bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/PermissionedToken.t.sol:89:9
+   │
+89 │         token.transfer(attacker, 1 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[unused-return]: Return value of an external call is not used
+    ╭▸ test/AcceptedDesign.t.sol:163:34
+    │
+163 │         (,, address tokenAddr) = script.deploy(admin, admin, admin, admin, "Atlas Forge Permissioned USD", "afpUSD");
+    │                                  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/PermissionedToken.t.sol:99:9
+   │
+99 │         token.transfer(bob, 1 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+    ╭▸ test/PermissionedToken.t.sol:108:9
+    │
+108 │         token.transferFrom(alice, attacker, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[unused-return]: Return value of an external call is not used
+    ╭▸ test/PermissionedToken.t.sol:104:9
+    │
+104 │         token.approve(bob, 10 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:108:9
+    │
+108 │         token.transferFrom(alice, attacker, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+    ╭▸ test/PermissionedToken.t.sol:119:9
+    │
+119 │         token.transferFrom(attacker, alice, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[unused-return]: Return value of an external call is not used
+    ╭▸ test/PermissionedToken.t.sol:115:9
+    │
+115 │         token.approve(bob, 5 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:119:9
+    │
+119 │         token.transferFrom(attacker, alice, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+note[multi-contract-file]: prefer having only one contract, interface or library per file
+   ╭▸ test/Invariant.t.sol:12:10
+   │
+12 │ contract RestrictionHandler is Test {
+   │          ━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/multi-contract-file
+
+note[multi-contract-file]: prefer having only one contract, interface or library per file
+    ╭▸ test/Invariant.t.sol:187:10
+    │
+187 │ contract InvariantTest is Fixture {
+    │          ━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/multi-contract-file
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:158:9
+    │
+158 │         token.transfer(bob, 1);
+    │         ━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:162:9
+    │
+162 │         token.transfer(alice, 1);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[missing-zero-check]: address parameter is used in a state write or value transfer without a zero-address check
+   ╭▸ test/Invariant.t.sol:30:9
+   │
+30 │         address issuer_,
+   │         ━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-zero-check
+
+warning[missing-zero-check]: address parameter is used in a state write or value transfer without a zero-address check
+   ╭▸ test/Invariant.t.sol:32:9
+   │
+32 │         address recoveryAgent_,
+   │         ━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-zero-check
+
+warning[missing-zero-check]: address parameter is used in a state write or value transfer without a zero-address check
+   ╭▸ test/Invariant.t.sol:31:9
+   │
+31 │         address freezer_,
+   │         ━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/missing-zero-check
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:167:9
+    │
+167 │         token.transfer(bob, 25 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+    ╭▸ test/PermissionedToken.t.sol:176:9
+    │
+176 │         token.transferFrom(alice, bob, 40 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[unused-return]: Return value of an external call is not used
+    ╭▸ test/PermissionedToken.t.sol:174:9
+    │
+174 │         token.approve(charlie, 40 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:176:9
+    │
+176 │         token.transferFrom(alice, bob, 40 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:190:9
+    │
+190 │         token.transfer(bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:199:9
+    │
+199 │         token.transfer(bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+    ╭▸ test/PermissionedToken.t.sol:210:9
+    │
+210 │         token.transferFrom(alice, bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+    ╭▸ test/PermissionedToken.t.sol:218:9
+    │
+218 │         token.transferFrom(alice, bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+   ╭▸ test/Invariant.t.sol:99:13
+   │
+99 │         try token.transferFrom(from, to, amount) {
+   │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[unused-return]: Return value of an external call is not used
+    ╭▸ test/PermissionedToken.t.sol:204:9
+    │
+204 │         token.approve(charlie, 10 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:210:9
+    │
+210 │         token.transferFrom(alice, bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:218:9
+    │
+218 │         token.transferFrom(alice, bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/PermissionedToken.t.sol:258:9
+    │
+258 │         token.transfer(bob, 1 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Invariant.t.sol:192:49
+    │
+192 │         address[] memory actors = new address[](4);
+    │                                                 ━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Invariant.t.sol:229:17
+    │
+229 │         address[4] memory actors_ = [alice, bob, charlie, attacker];
+    │                 ━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:12:34
+   │
+12 │         compliance.setMaxBalance(1200 ether);
+   │                                  ━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:15:29
+   │
+15 │         token.transfer(bob, 100 ether);
+   │                             ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:16:40
+   │
+16 │         assertEq(token.balanceOf(bob), 600 ether);
+   │                                        ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:18:105
+   │
+18 │         vm.expectRevert(abi.encodeWithSelector(Compliance.MaxBalanceExceeded.selector, bob, 1201 ether, 1200 ether));
+   │                                                                                                         ━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:25:34
+   │
+25 │         compliance.setMaxBalance(1000 ether);
+   │                                  ━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:27:107
+   │
+27 │         vm.expectRevert(abi.encodeWithSelector(Compliance.MaxBalanceExceeded.selector, alice, 1001 ether, 1000 ether));
+   │                                                                                                           ━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:29:27
+   │
+29 │         token.mint(alice, 1 ether);
+   │                           ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:47:29
+   │
+47 │         token.transfer(bob, 1 ether);
+   │                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:53:29
+   │
+53 │         token.transfer(bob, 1 ether);
+   │                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:54:40
+   │
+54 │         assertEq(token.balanceOf(bob), 501 ether);
+   │                                        ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:75:29
+   │
+75 │         token.transfer(bob, 1 ether);
+   │                             ━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+   ╭▸ test/Compliance.t.sol:76:40
+   │
+76 │         assertEq(token.balanceOf(bob), 501 ether);
+   │                                        ━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:106:34
+    │
+106 │         compliance.setMaxBalance(1000 ether);
+    │                                  ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:107:42
+    │
+107 │         assertEq(token.balanceOf(alice), 1000 ether);
+    │                                          ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:110:31
+    │
+110 │         token.transfer(alice, 100 ether);
+    │                               ━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:111:42
+    │
+111 │         assertEq(token.balanceOf(alice), 1000 ether);
+    │                                          ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:116:34
+    │
+116 │         compliance.setMaxBalance(1000 ether);
+    │                                  ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+warning[uninitialized-local]: local variable is read before being initialized
+    ╭▸ test/Invariant.t.sol:230:25
+    │
+230 │         for (uint256 i; i < actors_.length; ++i) {
+    │                         ━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/uninitialized-local
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:232:18
+    │
+232 │             if (!token.frozen(account)) continue;
+    │                  ━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:233:17
+    │
+233 │             if (token.balanceOf(account) == 0) continue;
+    │                 ━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ script/TestnetSmoke.s.sol:412:13
+    │
+412 │         if (cfg.token.balanceOf(cfg.alice) != aliceBefore + MINT_AMOUNT) revert("MINT_ALICE_1000 failed");
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:235:13
+    │
+235 │             vm.prank(account);
+    │             ━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:236:17
+    │
+236 │             try token.transfer(other, 1) {
+    │                 ━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ script/TestnetSmoke.s.sol:431:13
+    │
+431 │         if (cfg.token.balanceOf(cfg.alice) != aliceBefore - TRANSFER_AMOUNT) revert("ALICE delta failed");
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ script/TestnetSmoke.s.sol:432:13
+    │
+432 │         if (cfg.token.balanceOf(cfg.bob) != bobBefore + TRANSFER_AMOUNT) revert("BOB delta failed");
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:239:17
+    │
+239 │             if (token.balanceOf(other) == 0) continue;
+    │                 ━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:240:13
+    │
+240 │             vm.prank(other);
+    │             ━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[calls-loop]: external call inside a loop
+    ╭▸ test/Invariant.t.sol:241:17
+    │
+241 │             try token.transfer(account, 1) {
+    │                 ━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/calls-loop
+
+warning[require-revert-in-loop]: `require` or `revert` inside a loop
+    ╭▸ test/Invariant.t.sol:237:17
+    │
+237 │                 revert("frozen sent");
+    │                 ━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/require-revert-in-loop
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ script/TestnetSmoke.s.sol:490:13
+    │
+490 │         if (cfg.token.balanceOf(cfg.alice) != aliceBal) revert("freeze changed balance");
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+warning[require-revert-in-loop]: `require` or `revert` inside a loop
+    ╭▸ test/Invariant.t.sol:242:17
+    │
+242 │                 revert("frozen received");
+    │                 ━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/require-revert-in-loop
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ test/Invariant.t.sol:233:17
+    │
+233 │             if (token.balanceOf(account) == 0) continue;
+    │                 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ test/Invariant.t.sol:239:17
+    │
+239 │             if (token.balanceOf(other) == 0) continue;
+    │                 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:17:5
+   │
+17 │     address internal admin = makeAddr("admin");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:18:5
+   │
+18 │     address internal issuer = makeAddr("issuer");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:19:5
+   │
+19 │     address internal freezer = makeAddr("freezer");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:20:5
+   │
+20 │     address internal recovery = makeAddr("recovery");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:21:5
+   │
+21 │     address internal alice = makeAddr("alice");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:22:5
+   │
+22 │     address internal bob = makeAddr("bob");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:23:5
+   │
+23 │     address internal charlie = makeAddr("charlie");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+note[function-init-state]: state variable initializer depends on a non-pure function or another state variable
+   ╭▸ test/helpers/Fixture.sol:24:5
+   │
+24 │     address internal attacker = makeAddr("attacker");
+   │     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/function-init-state
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ script/TestnetSmoke.s.sol:556:13
+    │
+556 │         if (cfg.token.balanceOf(cfg.alice) != 0) revert("forceTransfer did not debit ALICE");
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:118:28
+    │
+118 │         token.approve(bob, 50 ether);
+    │                            ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:121:42
+    │
+121 │         token.transferFrom(alice, alice, 50 ether);
+    │                                          ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:122:42
+    │
+122 │         assertEq(token.balanceOf(alice), 1000 ether);
+    │                                          ━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:130:41
+    │
+130 │         token.forceTransfer(alice, bob, 100 ether);
+    │                                         ━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:131:40
+    │
+131 │         assertEq(token.balanceOf(bob), 600 ether);
+    │                                        ━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:142:46
+    │
+142 │         token.forceTransfer(alice, attacker, 10 ether);
+    │                                              ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+note[literal-instead-of-constant]: this literal appears multiple times in the contract; declare a named constant for it
+    ╭▸ test/Compliance.t.sol:143:45
+    │
+143 │         assertEq(token.balanceOf(attacker), 10 ether);
+    │                                             ━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/literal-instead-of-constant
+
+warning[incorrect-strict-equality]: dangerous strict equality check on an externally-influenced value
+    ╭▸ script/TestnetSmoke.s.sol:557:13
+    │
+557 │         if (cfg.token.balanceOf(cfg.unauthorized) != toBefore + amount) {
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/incorrect-strict-equality
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Compliance.t.sol:15:9
+   │
+15 │         token.transfer(bob, 100 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Compliance.t.sol:20:9
+   │
+20 │         token.transfer(bob, 601 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+    ╭▸ script/TestnetSmoke.s.sol:661:31
+    │
+661 │         if (ret.length < 4 || bytes4(ret) != expectedSel) {
+    │                               ━━━━━━━━━━━
+    │
+    ├ note: consider disabling this lint if you're certain the cast is safe
+    │       
+    │       // casting to 'bytes4' is safe because [explain why]
+    │       // forge-lint: disable-next-line(unsafe-typecast)
+    │       
+    │       
+    ╰ help: https://getfoundry.sh/forge/linting/unsafe-typecast
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Compliance.t.sol:47:9
+   │
+47 │         token.transfer(bob, 1 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Compliance.t.sol:53:9
+   │
+53 │         token.transfer(bob, 1 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Compliance.t.sol:67:9
+   │
+67 │         token.transfer(bob, 1);
+   │         ━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+   ╭▸ test/Compliance.t.sol:75:9
+   │
+75 │         token.transfer(bob, 1 ether);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/Compliance.t.sol:110:9
+    │
+110 │         token.transfer(alice, 100 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+
+warning[arbitrary-send-erc20]: `transferFrom` uses an arbitrary `from`; require it to equal `msg.sender` or `address(this)`
+    ╭▸ test/Compliance.t.sol:121:9
+    │
+121 │         token.transferFrom(alice, alice, 50 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/arbitrary-send-erc20
+
+warning[unused-return]: Return value of an external call is not used
+    ╭▸ test/Compliance.t.sol:118:9
+    │
+118 │         token.approve(bob, 50 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/unused-return
+
+warning[erc20-unchecked-transfer]: ERC20 'transfer' and 'transferFrom' calls should check the return value
+    ╭▸ test/Compliance.t.sol:121:9
+    │
+121 │         token.transferFrom(alice, alice, 50 ether);
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    │
+    ╰ help: https://getfoundry.sh/forge/linting/erc20-unchecked-transfer
+

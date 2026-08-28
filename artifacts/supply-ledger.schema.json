@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atlas Forge supply ledger (rehearsal)",
+  "description": "Hand-written sanitized supply ledger. totalSupply changes only on ISSUER mint/burn. freeze and forceTransfer are supply-preserving. Never copy broadcast JSON. This PR did not broadcast.",
+  "type": "object",
+  "required": ["disclaimer", "status", "entries"],
+  "properties": {
+    "disclaimer": {
+      "type": "string",
+      "const": "ATLAS FORGE RWA PUBLIC TESTNET ENGINEERING REHEARSAL. Not a live issuance, reserve, AUM, or NAV report."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["NOT_EXECUTED", "PARTIAL", "COMPLETE"]
+    },
+    "chainId": { "type": "integer" },
+    "token": { "type": "string" },
+    "commitSha": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seq", "op", "supplyChanging", "totalSupplyBefore", "totalSupplyAfter", "status"],
+        "properties": {
+          "seq": { "type": "integer" },
+          "op": {
+            "type": "string",
+            "enum": [
+              "DEPLOY",
+              "MINT",
+              "BURN",
+              "TRANSFER",
+              "FREEZE",
+              "UNFREEZE",
+              "FORCE_TRANSFER",
+              "SET_VERIFIED",
+              "SET_MAX_BALANCE",
+              "SET_TAGS"
+            ]
+          },
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "amount": { "type": "string", "description": "Decimal string, wei." },
+          "supplyChanging": { "type": "boolean" },
+          "totalSupplyBefore": { "type": "string" },
+          "totalSupplyAfter": { "type": "string" },
+          "txHash": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["PASS", "FAIL", "NOT EXECUTED — no public-chain broadcast in this PR"]
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}
